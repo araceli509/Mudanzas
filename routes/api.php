@@ -19,4 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix'=>'auth'],function(){
 	Route::get('busqueda_id/{id}','Mudanza\DocumentosController@busqueda_id');
+    //Apis para actualizar,eliminar y listar uno o varios clientes
+    Route::group(['prefix'=>'cliente'],function(){   
+    Route::get('listarcliente','Mudanza\ClienteController@listarclientes');
+    Route::get('busquedacliente_id/{id}','Mudanza\ClienteController@busquedacliente_id');
+    Route::post('agregar_cliente','Mudanza\ClienteController@agregar_cliente');
+    Route::post('actualizar_cliente/{cliente}','Mudanza\ClienteController@actualizar_cliente');
+    Route::post('eliminar_cliente/{id}','Mudanza\ClienteController@eliminar_cliente');
+    });
 });
