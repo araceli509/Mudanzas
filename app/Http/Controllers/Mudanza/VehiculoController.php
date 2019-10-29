@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 use App\Models\Vehiculo;
 use Illuminate\Support\Facades\Validator;
 
-class MudanzasController extends Controller
+class VehiculoController extends Controller
 {
   function insertarVehiculo(Request $request){
     $request->validate([
@@ -23,7 +23,7 @@ class MudanzasController extends Controller
 
         ]);
 
-        $mudanza = vehiculo::create([
+        $mudanza = Vehiculo::create([
             'id_cliente' => $request['id_cliente'],
             'id_prestador' => $request['id_prestador'],
             'modelo' => $request['origen'],
@@ -38,9 +38,15 @@ class MudanzasController extends Controller
   }
 
   function listarMiVehiculo(Request $request){
-    $mivehiculo= mudanzas::find($request->id_prestador)->take(1)->first();
-    return $mivehiculo;
 
+    $id=$request->input('id_prestador');
+	$consulta= Vehiculo::where('id_prestador',$id)->take(1)->first();
+		if (empty($consulta)) {
+			return 'error no encontrado';
+		} else {
+
+			return response()->json(['mivehiculo'=>$mivehiculo]);
+		}
   }
 
 }
