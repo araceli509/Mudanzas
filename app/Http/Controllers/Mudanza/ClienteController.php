@@ -68,6 +68,7 @@ class ClienteController extends Controller
         $cliente->fill($request->all());
         $cliente ->save();
         return response()->json(['Exito'=>'Actualizado correctamente']); 
+        
     }
 
     //Metodo para eliminar un cliente 

@@ -15,5 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('busqueda/{id}','Mudanza\DocumentosController@busqueda_documento');
+//******************************Documentos***********************************************
+Route::get('documentos/buscar/{id}','Mudanza\DocumentosController@busqueda_documentos');
+Route::get('documentos/insertar','Mudanza\DocumentosController@insertar_documentos_api');
+Route::get('documentos/eliminar/{id}','Mudanza\DocumentosController@eliminar_documentos_api');
+Route::get('documentos/actualizar','Mudanza\DocumentosController@actualizar_documentos_api');
+Route::get('documentos/listar','Mudanza\DocumentosController@listar_documentos');
+/*** comentarios***/
+Route::get('comentario_busqueda/{id}','Mudanza\ComentarioController@busqueda_comentario');
+Route::get('ranking_busqueda/{id}','Mudanza\RankingController@busqueda_ranking');
 
+
+
+Route::get('vehiculos/busqueda/{id_prestador}','Mudanza\VehiculoController@listarMiVehiculo');
+Route::post('vehiculos/insertar','Mudanza\VehiculoController@insertarVehiculo');
+
+Route::post('mudanzas/insertar','Mudanza\MudanzasController@insertarMudanza');
+Route::get('mudazas/listarmismudanzas/{id}','Mudanza\MudanzasController@listarMisMudanzas');
+Route::get('mudanza/listarmisservicios/{id}','Mudanza\MudanzasController@listarMisServicios');

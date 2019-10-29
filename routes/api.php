@@ -18,13 +18,32 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix'=>'auth'],function(){
-	Route::get('busqueda_id/{id}','Mudanza\DocumentosController@busqueda_id');
-    //Apis para actualizar,eliminar y listar uno o varios clientes
-    Route::group(['prefix'=>'cliente'],function(){   
+    
+    //Apis para la actualizacion,resgistro,eliminacion y listado de uno o mas usuarios
+    Route::group(['prefix'=>'cliente'],function(){
     Route::get('listarcliente','Mudanza\ClienteController@listarclientes');
     Route::get('busquedacliente_id/{id}','Mudanza\ClienteController@busquedacliente_id');
     Route::post('agregar_cliente','Mudanza\ClienteController@agregar_cliente');
     Route::post('actualizar_cliente/{cliente}','Mudanza\ClienteController@actualizar_cliente');
     Route::post('eliminar_cliente/{id}','Mudanza\ClienteController@eliminar_cliente');
     });
+    
+	
+	//
+	Route::get('busqueda_id_comentario/{id}','Mudanza\ComentarioController@busqueda_id_comentario');
+	Route::get('busqueda_id_ranking/{id}','Mudanza\RankingController@busqueda_id_ranking');
+	
+		//********************************Comentarios***************************************************
+	 Route::group(['prefix'=>'comentario'],function(){	
+    Route::get('listarcomentario','Mudanza\ComentarioController@listarcomentarios');
+    Route::get('busquedacomentario_id/{id}','Mudanza\ComentarioController@busquedacomentario_id');
+    Route::post('agregar_comentario','Mudanza\ComentarioController@agregar_comentario');
+    Route::post('actualizar_comentario/{comentario}','Mudanza\ComentarioController@actualizar_comentario');
+    Route::post('eliminar_comentario/{id}','Mudanza\ComentarioController@eliminar_comentario');
+	 });
+	//********************************Documentos***************************************************
+	Route::get('busqueda_documento/{id}','Mudanza\DocumentosController@busqueda_documentos');
+	Route::post('insertar_documento','Mudanza\DocumentosController@insertar_documentos');
+	Route::post('eliminar_documento/{id}','Mudanza\DocumentosController@eliminar_documentos');
+	Route::post('actualizar_documento/{id}','Mudanza\DocumentosController@actualizar_documentos');
 });
