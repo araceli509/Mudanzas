@@ -1,0 +1,83 @@
+<?php
+
+namespace App\Http\Controllers\Mudanza;
+use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use GuzzleHttp\Client;
+use App\Models\Reservacion;
+use Illuminate\Support\Facades\Validator;
+
+class ReservacionController extends Controller
+{
+
+//Metodo que devuelve una lista de reservaciones registrados 
+    public function listarreservaciones(){
+         return response()->json(Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','seguro','numero_pisos','monto')
+         ->where('status', '=','1')
+        ->get());
+    }
+
+    //Metodo que busca un reservacion por medio de su id
+	public function busquedareservacion_id(Request $request){
+		 $id=$request->id;
+		 return response()->json($id=Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','seguro','numero_pisos','monto')
+        ->where('id_reservacion','=',$id)
+        ->where('status', '=','1')
+        ->get());
+    }
+    
+    //Metodo que crea un reservacion nuevo
+   public function agregar_reservacion(Request $request){
+    $request->validate([
+            'id_cliente'=> ['required'],
+            'id_prestador'=> ['required'],
+            'fecha_hora'=> ['required'],
+            'origen'=> ['required', 'string'],
+            'destino'=> ['required', 'string'],
+            'origenLatLong' => ['required', 'string'],
+            'destinoLatLong'=> ['required', 'string'],
+            'seguro'=> ['required'],
+            'numero_pisos'=> ['required', 'integer'],
+        ]);
+        $reservacion = Reservacion::create([            
+            'id_cliente' => $request['id_cliente'],
+            'id_prestador' => $request['id_prestador'],
+            'fecha_hora' => $request['fecha_hora'],
+            'origen' => $request['origen'],
+            'destino' => $request['destino'],
+            'origenLatLong' => $request['origenLatLong'],
+            'destinoLatLong' => $request['destinoLatLong'],
+            'seguro' => $request['seguro'],
+            'numero_pisos' => $request['numero_pisos'],
+            'monto' => $request['monto'],
+            'status'=>'1',
+        ]);
+    
+        return response()->json(['Exito'=>'Registrado correctamente']);
+    }
+    
+    //metodo que actualiza la informacion de la reservacion
+    public function actualizar_reservacion(Reservacion $reservacion,Request $request){
+        $request->validate([
+            'origen'=> ['required', 'string'],
+            'destino'=> ['required', 'string'],
+            'origenLatLong' => ['required', 'string'],
+            'destinoLatLong'=> ['required', 'string'],
+            'seguro'=> ['required'],
+            'numero_pisos'=> ['required', 'integer'],
+            'fecha_registro'=> ['required'],
+        ]);
+        $reservacion->fill($request->all());
+        $reservacion ->save();
+        return response()->json(['Exito'=>'Actualizado correctamente']); 
+    }
+
+    //Metodo para eliminar una reservacion 
+    public function eliminar_reservacion(Request $request,$id){
+        $editar = Reservacion::find($id);
+        $editar->status = '0';
+        $editar->update();
+        return response()->json(['Exito'=>'Eliminado correctamente']); 
+       }
+}

@@ -27,6 +27,14 @@ Route::group(['prefix'=>'auth'],function(){
     Route::post('actualizar_cliente/{cliente}','Mudanza\ClienteController@actualizar_cliente');
     Route::post('eliminar_cliente/{id}','Mudanza\ClienteController@eliminar_cliente');
     });
+
+    Route::group(['prefix'=>'reservacion'],function(){
+        Route::get('listarreservaciones','Mudanza\ReservacionController@listarreservaciones');
+        Route::get('busquedareservacion_id/{id}','Mudanza\ReservacionController@busquedareservacion_id');
+        Route::post('agregar_reservacion','Mudanza\ReservacionController@agregar_reservacion');
+        Route::post('actualizar_reservacion/{reservacion}','Mudanza\ReservacionController@actualizar_reservacion');
+        Route::post('eliminar_reservacion/{id}','Mudanza\ReservacionController@eliminar_reservacion');
+        });
     
 	
 	//
