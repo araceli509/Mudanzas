@@ -35,9 +35,8 @@ Route::group(['prefix'=>'auth'],function(){
         Route::post('actualizar_reservacion/{reservacion}','Mudanza\ReservacionController@actualizar_reservacion');
         Route::post('eliminar_reservacion/{id}','Mudanza\ReservacionController@eliminar_reservacion');
         });
-    
 	
-	//
+	
 	Route::get('busqueda_id_comentario/{id}','Mudanza\ComentarioController@busqueda_id_comentario');
 	Route::get('busqueda_id_ranking/{id}','Mudanza\RankingController@busqueda_id_ranking');
 	
@@ -53,5 +52,14 @@ Route::group(['prefix'=>'auth'],function(){
 	Route::get('busqueda_documento/{id}','Mudanza\DocumentosController@busqueda_documentos');
 	Route::post('insertar_documento','Mudanza\DocumentosController@insertar_documentos');
 	Route::post('eliminar_documento/{id}','Mudanza\DocumentosController@eliminar_documentos');
-	Route::post('actualizar_documento/{id}','Mudanza\DocumentosController@actualizar_documentos');
+    Route::post('actualizar_documento/{id}','Mudanza\DocumentosController@actualizar_documentos');
+    
+
+     /********************************PRESTADOR SERVICIO ************************************************ */
+     Route::group(['prefix'=>'prestador_servicio'],function(){
+        Route::post('insertar','Mudanza\PrestadorServicioController@insertar');
+        Route::get('ultimo','Mudanza\PrestadorServicioController@ultimo_registro');
+     });
+
+
 });
