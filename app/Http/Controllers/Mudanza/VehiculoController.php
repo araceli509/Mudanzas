@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class VehiculoController extends Controller
 {
-  function insertarVehiculo(Request $request){
+  function insertar(Request $request){
 
         $id_prestador=$request->id_prestador;
         $modelo=$request->modelo;
