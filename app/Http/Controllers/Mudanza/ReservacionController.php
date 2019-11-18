@@ -29,8 +29,11 @@ class ReservacionController extends Controller
     public function reservaciones()
     {
       $reservaciones= Reservacion::with('Cliente')->get();
-      return $reservaciones->toJson();
-    //  return response()->json(Reservacion::all());
+
+      $data= $reservaciones->toJson();
+
+    return response(['reservaciones'=>$data]);
+
     }
 
     //Metodo que crea un reservacion nuevo
