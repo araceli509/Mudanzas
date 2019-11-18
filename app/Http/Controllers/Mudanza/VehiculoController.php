@@ -11,30 +11,29 @@ use Illuminate\Support\Facades\Validator;
 class VehiculoController extends Controller
 {
   function insertarVehiculo(Request $request){
-    $request->validate([
-            'id_vehiculo'=> ['required', 'int'],
-            'id_prestador'=> ['required', 'int'],
-            'modelo' => ['required', 'string'],
-            'placas'=> ['required', 'string',],
-            'capacidad_carga'=> ['required', 'double'],
-            'foto_frontal'=> ['required', 'string'],
-            'foto_lateral'=>['required','string'],
-            'foto_trasera'=>['required','string'],
 
-        ]);
-
+        $id_prestador=$request->id_prestador;
+        $modelo=$request->modelo;
+        $placas=$request->placas;
+        $capacidad_carga=$request->capacidad_carga;
+        $foto_frontal=$request->foto_frontal;
+        $foto_lateral=$request->foto_lateral;
+        $foto_trasera=$request->foto_trasera;
         $mudanza = Vehiculo::create([
-            'id_cliente' => $request['id_cliente'],
-            'id_prestador' => $request['id_prestador'],
-            'modelo' => $request['modelo'],
-            'placas' => $request['placas'],
-            'capacidad_carga' => $request['capacidad_carga'],
-            'foto_frontal' => $request['foto_frontal'],
-            'foto_lateral' => $request['foto_lateral'],
-            'foto_trasera' => $request['foto_trasera']
+            'id_prestador' => $id_prestador,
+            'modelo' => $modelo,
+            'placas' => $placas,
+            'capacidad_carga' => $capacidad_carga,
+            'foto_frontal' => $foto_frontal,
+            'foto_lateral' => $foto_lateral,
+            'foto_trasera' => $foto_trasera
         ]);
-      return response()->json(['Exito'=>'Vehiculo creado']);
 
+  }
+
+  public function listar_vehiculos(){
+    $vehiculo=Vehiculo::all();
+    return response()->json(['Vehiculo'=>$vehiculo]);
   }
 
   function listarMiVehiculo(Request $request){

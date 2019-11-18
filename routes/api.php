@@ -48,7 +48,7 @@ Route::group(['prefix'=>'auth'],function(){
     Route::post('actualizar_comentario/{comentario}','Mudanza\ComentarioController@actualizar_comentario');
     Route::post('eliminar_comentario/{id}','Mudanza\ComentarioController@eliminar_comentario');
 	 });
-    //********************************Documentos***************************************************
+    //**************************************DOCUMENTOS***************************************************
     Route::group(['prefix'=>'documentos'],function(){
         Route::get('listar','Mudanza\DocumentosController@listar_documentos');
         Route::get('buscar/{id}','Mudanza\DocumentosController@busqueda_documentos');
@@ -62,6 +62,12 @@ Route::group(['prefix'=>'auth'],function(){
      Route::group(['prefix'=>'prestador_servicio'],function(){
         Route::post('insertar','Mudanza\PrestadorServicioController@insertar');
         Route::get('ultimo','Mudanza\PrestadorServicioController@ultimo_registro');
+     });
+
+     /**************************************VEHICULO******************************************************* */
+     Route::group(['prefix'=>'vehiculo'],function(){
+        Route::post('insertar','Mudanza\VehiculoController@insertar');
+        Route::get('listar','Mudanza\VehiculoController@listar_vehiculos');
      });
 
 
