@@ -78,7 +78,7 @@ class ReservacionController extends Controller
             'destino'=> ['required', 'string'],
             'origenLatLong' => ['required', 'string'],
             'destinoLatLong'=> ['required', 'string'],
-            'distancia' => ['required']
+            'distancia' => ['required'],
             'seguro'=> ['required'],
             'numero_pisos'=> ['required', 'integer'],
             'fecha_registro'=> ['required'],
