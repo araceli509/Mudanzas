@@ -62,5 +62,11 @@ Route::group(['prefix'=>'auth'],function(){
         Route::get('ultimo','Mudanza\PrestadorServicioController@ultimo_registro');
      });
 
+      /********************************PRESTADOR SERVICIO ************************************************ */
+      Route::group(['prefix'=>'vehiculo'],function(){
+        Route::post('insertar','Mudanza\VehiculoController@insertar');
+        Route::get('listar','Mudanza\VehiculoController@listar_vehiculos');
+     });
+
 
 });
