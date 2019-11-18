@@ -70,7 +70,7 @@ Route::group(['prefix'=>'auth'],function(){
 
      /**********************************DOCUMENTOS***************************************************** */
 
-     Route::group(['prefix'=>'Documentos'],function(){
+     Route::group(['prefix'=>'documentos'],function(){
         Route::post('insertar','Mudanza\DocumentosController@insertar_documentos');
         Route::get('listar','Mudanza\DocumentosController@listar_documentos');
      });
