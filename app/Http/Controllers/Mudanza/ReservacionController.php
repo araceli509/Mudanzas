@@ -26,9 +26,11 @@ class ReservacionController extends Controller
         ->where('status', '=','1')
         ->get());
     }
-    public function reservaciones()
-    {
-      $reservaciones= Reservacion::with('Cliente')->get();
+    public function reservaciones(Request $request){
+  		 $id=$request->id;
+      $reservaciones= Reservacion::with('Cliente')->where('id_reservacion','=',$id)
+        ->where('status', '=','1')
+        ->get();
 
       $data= $reservaciones->toJson();
 
