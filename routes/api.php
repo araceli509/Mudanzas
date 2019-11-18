@@ -48,9 +48,8 @@ Route::group(['prefix'=>'auth'],function(){
     Route::post('agregar_comentario','Mudanza\ComentarioController@agregar_comentario');
     Route::post('actualizar_comentario/{comentario}','Mudanza\ComentarioController@actualizar_comentario');
     Route::post('eliminar_comentario/{id}','Mudanza\ComentarioController@eliminar_comentario');
-	 });
-<<<<<<< HEAD
-    //**************************************DOCUMENTOS***************************************************
+     });
+         //**************************************DOCUMENTOS***************************************************
     Route::group(['prefix'=>'documentos'],function(){
         Route::get('listar','Mudanza\DocumentosController@listar_documentos');
         Route::get('buscar/{id}','Mudanza\DocumentosController@busqueda_documentos');
@@ -59,14 +58,6 @@ Route::group(['prefix'=>'auth'],function(){
         Route::post('actualizar/{id}','Mudanza\DocumentosController@actualizar_documentos');
     
     });
-=======
-	//********************************Documentos***************************************************
-	Route::get('busqueda_documento/{id}','Mudanza\DocumentosController@busqueda_documentos');
-	Route::post('insertar_documento','Mudanza\DocumentosController@insertar_documentos');
-	Route::post('eliminar_documento/{id}','Mudanza\DocumentosController@eliminar_documentos');
-    Route::post('actualizar_documento/{id}','Mudanza\DocumentosController@actualizar_documentos');
-
->>>>>>> c982dd50455e415aba5e6f9f0025f28039c911d5
 
      /********************************PRESTADOR SERVICIO ************************************************ */
      Route::group(['prefix'=>'prestador_servicio'],function(){
