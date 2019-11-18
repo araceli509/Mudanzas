@@ -16,7 +16,7 @@ class VehiculoController extends Controller
             'id_prestador'=> ['required', 'int'],
             'modelo' => ['required', 'string'],
             'placas'=> ['required', 'string',],
-            'capacidadCarga'=> ['required', 'string'],
+            'capacidad_carga'=> ['required', 'double'],
             'foto_frontal'=> ['required', 'string'],
             'foto_lateral'=>['required','string'],
             'foto_trasera'=>['required','string'],
@@ -26,12 +26,12 @@ class VehiculoController extends Controller
         $mudanza = Vehiculo::create([
             'id_cliente' => $request['id_cliente'],
             'id_prestador' => $request['id_prestador'],
-            'modelo' => $request['origen'],
-            'placas' => $request['origen'],
-            'capacidadCarga' => $request['distancia'],
-            'foto_frontal' => $request['fecha_registro'],
-            'foto_lateral' => $request['fecha_registro'],
-            'foto_trasera' => $request['fecha_registro']
+            'modelo' => $request['modelo'],
+            'placas' => $request['placas'],
+            'capacidad_carga' => $request['capacidad_carga'],
+            'foto_frontal' => $request['foto_frontal'],
+            'foto_lateral' => $request['foto_lateral'],
+            'foto_trasera' => $request['foto_trasera']
         ]);
       return response()->json(['Exito'=>'Vehiculo creado']);
 
