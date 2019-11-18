@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class ReservacionController extends Controller
 {
 
-//Metodo que devuelve una lista de reservaciones registrados 
+//Metodo que devuelve una lista de reservaciones registrados
     public function listarreservaciones(){
          return response()->json(Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','seguro','numero_pisos','monto')
          ->where('status', '=','1')
@@ -26,7 +26,13 @@ class ReservacionController extends Controller
         ->where('status', '=','1')
         ->get());
     }
-    
+    public function reservaciones()
+    {
+      $reservaciones= Reservacion::with('Cliente')->get();
+      return $reservaciones->toJson();
+    //  return response()->json(Reservacion::all());
+    }
+
     //Metodo que crea un reservacion nuevo
    public function agregar_reservacion(Request $request){
     $request->validate([
@@ -40,7 +46,7 @@ class ReservacionController extends Controller
             'seguro'=> ['required'],
             'numero_pisos'=> ['required', 'integer'],
         ]);
-        $reservacion = Reservacion::create([            
+        $reservacion = Reservacion::create([
             'id_cliente' => $request['id_cliente'],
             'id_prestador' => $request['id_prestador'],
             'fecha_hora' => $request['fecha_hora'],
@@ -53,10 +59,11 @@ class ReservacionController extends Controller
             'monto' => $request['monto'],
             'status'=>'1',
         ]);
-    
+
         return response()->json(['Exito'=>'Registrado correctamente']);
     }
-    
+
+
     //metodo que actualiza la informacion de la reservacion
     public function actualizar_reservacion(Reservacion $reservacion,Request $request){
         $request->validate([
@@ -70,14 +77,14 @@ class ReservacionController extends Controller
         ]);
         $reservacion->fill($request->all());
         $reservacion ->save();
-        return response()->json(['Exito'=>'Actualizado correctamente']); 
+        return response()->json(['Exito'=>'Actualizado correctamente']);
     }
 
-    //Metodo para eliminar una reservacion 
+    //Metodo para eliminar una reservacion
     public function eliminar_reservacion(Request $request,$id){
         $editar = Reservacion::find($id);
         $editar->status = '0';
         $editar->update();
-        return response()->json(['Exito'=>'Eliminado correctamente']); 
+        return response()->json(['Exito'=>'Eliminado correctamente']);
        }
 }

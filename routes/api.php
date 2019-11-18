@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix'=>'auth'],function(){
-    
+
     //Apis para la actualizacion,resgistro,eliminacion y listado de uno o mas usuarios
     Route::group(['prefix'=>'cliente'],function(){
     Route::get('listarcliente','Mudanza\ClienteController@listarclientes');
@@ -34,20 +34,22 @@ Route::group(['prefix'=>'auth'],function(){
         Route::post('agregar_reservacion','Mudanza\ReservacionController@agregar_reservacion');
         Route::post('actualizar_reservacion/{reservacion}','Mudanza\ReservacionController@actualizar_reservacion');
         Route::post('eliminar_reservacion/{id}','Mudanza\ReservacionController@eliminar_reservacion');
+        Route::get('reservaciones','Mudanza\ReservacionController@reservaciones');
         });
-	
-	
+
+
 	Route::get('busqueda_id_comentario/{id}','Mudanza\ComentarioController@busqueda_id_comentario');
 	Route::get('busqueda_id_ranking/{id}','Mudanza\RankingController@busqueda_id_ranking');
-	
+
 		//********************************Comentarios***************************************************
-	 Route::group(['prefix'=>'comentario'],function(){	
+	 Route::group(['prefix'=>'comentario'],function(){
     Route::get('listarcomentario','Mudanza\ComentarioController@listarcomentarios');
     Route::get('busquedacomentario_id/{id}','Mudanza\ComentarioController@busquedacomentario_id');
     Route::post('agregar_comentario','Mudanza\ComentarioController@agregar_comentario');
     Route::post('actualizar_comentario/{comentario}','Mudanza\ComentarioController@actualizar_comentario');
     Route::post('eliminar_comentario/{id}','Mudanza\ComentarioController@eliminar_comentario');
 	 });
+<<<<<<< HEAD
     //**************************************DOCUMENTOS***************************************************
     Route::group(['prefix'=>'documentos'],function(){
         Route::get('listar','Mudanza\DocumentosController@listar_documentos');
@@ -57,6 +59,14 @@ Route::group(['prefix'=>'auth'],function(){
         Route::post('actualizar/{id}','Mudanza\DocumentosController@actualizar_documentos');
     
     });
+=======
+	//********************************Documentos***************************************************
+	Route::get('busqueda_documento/{id}','Mudanza\DocumentosController@busqueda_documentos');
+	Route::post('insertar_documento','Mudanza\DocumentosController@insertar_documentos');
+	Route::post('eliminar_documento/{id}','Mudanza\DocumentosController@eliminar_documentos');
+    Route::post('actualizar_documento/{id}','Mudanza\DocumentosController@actualizar_documentos');
+
+>>>>>>> c982dd50455e415aba5e6f9f0025f28039c911d5
 
      /********************************PRESTADOR SERVICIO ************************************************ */
      Route::group(['prefix'=>'prestador_servicio'],function(){

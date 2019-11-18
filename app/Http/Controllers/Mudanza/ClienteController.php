@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Validator;
 class ClienteController extends Controller
 {
 
-//Metodo que devuelve una lista de clientes registrados 
+//Metodo que devuelve una lista de clientes registrados
     public function listarclientes(){
-         return response()->json(Cliente::select('nombre','apellidos','correo','direccion','telefono','codigo_postal','fecha_registro')
+         return response()->json(Cliente::select('id_cliente','nombre','apellidos','correo','direccion','telefono','codigo_postal','fecha_registro')
          ->where('status', '=','1')
         ->get());
     }
@@ -26,7 +26,7 @@ class ClienteController extends Controller
         ->where('status', '=','1')
         ->get());
     }
-    
+
     //Metodo que crea un cliente nuevo
    public function agregar_cliente(Request $request){
     $request->validate([
@@ -39,7 +39,7 @@ class ClienteController extends Controller
             'fecha_registro'=> ['required', 'date_format:Y/m/d'],
         ]);
         //$cliente = Cliente::create($request->all());
-        $cliente = Cliente::create([            
+        $cliente = Cliente::create([
             'nombre' => $request['nombre'],
             'apellidos' => $request['apellidos'],
             'correo' => $request['correo'],
@@ -50,10 +50,10 @@ class ClienteController extends Controller
             'fecha_registro' => $request['fecha_registro'],
             'status'=>'1',
         ]);
-    
+
         return response()->json(['Exito'=>'Registrado correctamente']);
     }
-    
+
     //metodo que actualiza la informacion del cliente
     public function actualizar_cliente(Cliente $cliente,Request $request){
         $request->validate([
@@ -67,15 +67,15 @@ class ClienteController extends Controller
         ]);
         $cliente->fill($request->all());
         $cliente ->save();
-        return response()->json(['Exito'=>'Actualizado correctamente']); 
-        
+        return response()->json(['Exito'=>'Actualizado correctamente']);
+
     }
 
-    //Metodo para eliminar un cliente 
+    //Metodo para eliminar un cliente
     public function eliminar_cliente(Request $request,$id){
         $editar = Cliente::find($id);
         $editar->status = '0';
         $editar->update();
-        return response()->json(['Exito'=>'Eliminado correctamente']); 
+        return response()->json(['Exito'=>'Eliminado correctamente']);
        }
 }
