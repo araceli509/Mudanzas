@@ -11,4 +11,11 @@ class Mudanzas extends Model
     public $timestamps=false;
 
     protected $fillable=['id_mudanza','id_cliente','id_prestador','origen','destino','distanci','tiempo',	'fecha_mudanza'];
+
+    public function cliente()
+    {
+      return $this->belongsTo(Cliente::class,'id_cliente');
+    }
+
+
 }

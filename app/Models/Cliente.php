@@ -10,5 +10,15 @@ class Cliente extends Model
     protected $primaryKey="id_cliente";
     public $timestamps=false;
 
-    protected $fillable=['nombre','apellidos','correo','direccion','telefono','codigo_postal','fecha_registro',	'status'];
+    protected $fillable=['id_cliente','nombre','apellidos','correo','direccion','telefono','codigo_postal','fecha_registro',	'status'];
+    public function misReservaciones()
+    {
+      return $this->hasMany(Reservacion::class,'id_reservacion');
+    }
+    public function misPagos()
+    {
+      return $this->hasMany(Pago::class,'id_pago');
+    }
+
+
 }
