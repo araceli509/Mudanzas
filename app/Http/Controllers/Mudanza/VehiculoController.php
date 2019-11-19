@@ -1,12 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Mudanza;
-use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use GuzzleHttp\Client;
 use App\Models\Vehiculo;
-use Illuminate\Support\Facades\Validator;
 
 class VehiculoController extends Controller
 {
@@ -19,7 +16,7 @@ class VehiculoController extends Controller
         $foto_frontal=$request->foto_frontal;
         $foto_lateral=$request->foto_lateral;
         $foto_trasera=$request->foto_trasera;
-        $mudanza = Vehiculo::create([
+        Vehiculo::create([
             'id_prestador' => $id_prestador,
             'modelo' => $modelo,
             'placas' => $placas,

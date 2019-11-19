@@ -10,5 +10,5 @@ class Documentos extends Model
     protected $primaryKey="id_documentos";
     public $timestamps=false;
 
-    protected $fillable=['id_documentos','id_prestador','ine','licencia_vigente','tarjeta_circulacion'];
+    protected $fillable=['id_prestador','ine','licencia_vigente','tarjeta_circulacion'];
 }
