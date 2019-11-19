@@ -13,7 +13,7 @@ class ReservacionController extends Controller
 
 //Metodo que devuelve una lista de reservaciones registrados
     public function listarreservaciones(){
-         return response()->json(Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','seguro','numero_pisos','monto')
+         return response()->json(Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','distancia','seguro','numero_pisos','monto')
          ->where('status', '=','1')
         ->get());
     }
@@ -21,7 +21,7 @@ class ReservacionController extends Controller
     //Metodo que busca un reservacion por medio de su id
 	public function busquedareservacion_id(Request $request){
 		 $id=$request->id;
-		 return response()->json($id=Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','seguro','numero_pisos','monto')
+		 return response()->json($id=Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','distancia','seguro','numero_pisos','monto')
         ->where('id_reservacion','=',$id)
         ->where('status', '=','1')
         ->get());
@@ -48,6 +48,7 @@ class ReservacionController extends Controller
             'destino'=> ['required', 'string'],
             'origenLatLong' => ['required', 'string'],
             'destinoLatLong'=> ['required', 'string'],
+            'distancia'=> ['required'], 
             'seguro'=> ['required'],
             'numero_pisos'=> ['required', 'integer'],
         ]);
@@ -59,6 +60,7 @@ class ReservacionController extends Controller
             'destino' => $request['destino'],
             'origenLatLong' => $request['origenLatLong'],
             'destinoLatLong' => $request['destinoLatLong'],
+            'distancia' => $request['distancia'],
             'seguro' => $request['seguro'],
             'numero_pisos' => $request['numero_pisos'],
             'monto' => $request['monto'],
@@ -76,6 +78,7 @@ class ReservacionController extends Controller
             'destino'=> ['required', 'string'],
             'origenLatLong' => ['required', 'string'],
             'destinoLatLong'=> ['required', 'string'],
+            'distancia' => ['required'],
             'seguro'=> ['required'],
             'numero_pisos'=> ['required', 'integer'],
             'fecha_registro'=> ['required'],
