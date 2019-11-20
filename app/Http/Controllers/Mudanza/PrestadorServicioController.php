@@ -35,4 +35,14 @@ class PrestadorServicioController extends Controller
 		->where('status','=','1')
 		->get()]);
 	}
+
+	public function verprestadorporhora($horainicio){
+		$prestador = PrestadorServicio::join('horario_tarifa','prestador_servicio.id_prestador','=','horario_tarifa.id_prestador')
+		->join('vehiculos2','prestador_servicio.id_prestador','=','vehiculos2.id_prestador')
+		->join('ranking','prestador_servicio.id_prestador','=','ranking.id_prestador')
+		->select('prestador_servicio.nombre','vehiculos2.capacidad_carga','horario_tarifa.precio','ranking.valoracion')
+		->WhereRaw('? BETWEEN horario_tarifa.hora_inicio and horario_tarifa.hora_salida',$horainicio)
+        ->get();
+		  return response()->json(['prestador'=>$prestador]);
+	}
 }

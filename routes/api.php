@@ -61,6 +61,7 @@ Route::group(['prefix'=>'auth'],function(){
         Route::post('insertar','Mudanza\PrestadorServicioController@insertar');
         Route::get('ultimo','Mudanza\PrestadorServicioController@ultimo_registro');
         Route::get('buscar/{correo}','Mudanza\PrestadorServicioController@buscar_correo');
+        Route::get('horario_tarifa/{horainicio}','Mudanza\PrestadorServicioController@verprestadorporhora');
      });
 
       /**********************************VEHICULO ************************************************ */
