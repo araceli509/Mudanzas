@@ -97,4 +97,11 @@ class ReservacionController extends Controller
         $editar->update();
         return response()->json(['Exito'=>'Eliminado correctamente']);
        }
+
+       public function aceptar_reservacion($id){
+           $editar = Reservacion::find($id);
+           $editar->status = '2';
+           $editar->update();
+           return response()->json(['Exito'=>'Aceptado correctamente']);
+          }
 }
