@@ -29,13 +29,17 @@ class ReservacionController extends Controller
     public function reservaciones($id){
 
       $reservaciones= Reservacion::with('Cliente')->where('id_prestador','=',$id)
-        ->where('status', '=','1')
+        ->where('status', '=','0')
         ->get();
 
       $data= $reservaciones->toArray();
     // return $data;
     return response(["reservacion"=>$data]);
 
+    }
+    public function FunctionName($value='')
+    {
+      // code...
     }
 
     //Metodo que crea un reservacion nuevo
