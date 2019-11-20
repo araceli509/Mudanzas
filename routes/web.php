@@ -33,3 +33,7 @@ Route::post('vehiculos/insertar','Mudanza\VehiculoController@insertarVehiculo');
 Route::post('mudanzas/insertar','Mudanza\MudanzasController@insertarMudanza');
 Route::get('mudazas/listarmismudanzas/{id}','Mudanza\MudanzasController@listarMisMudanzas');
 Route::get('mudanza/listarmisservicios/{id}','Mudanza\MudanzasController@listarMisServicios');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
