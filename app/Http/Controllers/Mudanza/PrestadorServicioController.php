@@ -27,8 +27,12 @@ class PrestadorServicioController extends Controller
 		return response()->json(['Prestador'=>$prestador]);
 	}
 	
-	public function buscar_correo($correo){
-		$prestador=PrestadorServicio::find($correo);
-		return response()->json(['Prestador'=>$prestador]);
+	public function buscar_correo(Request $request){
+		$correo=$request->correo;
+		return response()->json(['Prestador'=>$prestador=PrestadorServicio::select('id_prestador')
+		->where('correo','=',$correo)
+		->where('solicitud','=','1')
+		->where('status','=','1')
+		->get()]);
 	}
 }
