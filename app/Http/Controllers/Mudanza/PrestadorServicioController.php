@@ -25,5 +25,10 @@ class PrestadorServicioController extends Controller
     public function ultimo_registro(){
         $prestador=PrestadorServicio::all();
 		return response()->json(['Prestador'=>$prestador]);
-    }
+	}
+	
+	public function buscar_correo($correo){
+		$prestador=PrestadorServicio::find($correo);
+		return response()->json(['Prestador'=>$prestador]);
+	}
 }

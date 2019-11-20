@@ -60,6 +60,7 @@ Route::group(['prefix'=>'auth'],function(){
      Route::group(['prefix'=>'prestador_servicio'],function(){
         Route::post('insertar','Mudanza\PrestadorServicioController@insertar');
         Route::get('ultimo','Mudanza\PrestadorServicioController@ultimo_registro');
+        Route::get('buscar/{$correo}','Mudanza\PrestadorServicioController@buscar_correo');
      });
 
       /**********************************VEHICULO ************************************************ */
