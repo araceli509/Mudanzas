@@ -34,6 +34,7 @@ Route::group(['prefix'=>'auth'],function(){
         Route::post('agregar_reservacion','Mudanza\ReservacionController@agregar_reservacion');
         Route::post('actualizar_reservacion/{reservacion}','Mudanza\ReservacionController@actualizar_reservacion');
         Route::post('eliminar_reservacion/{id}','Mudanza\ReservacionController@eliminar_reservacion');
+        Route::post('aceptar_reservacion/{id}','Mudanza\ReservacionController@aceptar_reservacion');
         Route::get('reservaciones/{id_cliente}','Mudanza\ReservacionController@reservaciones');
         });
 
