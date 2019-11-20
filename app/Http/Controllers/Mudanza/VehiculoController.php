@@ -33,16 +33,5 @@ class VehiculoController extends Controller
     return response()->json(['Vehiculo'=>$vehiculo]);
   }
 
-  function listarMiVehiculo(Request $request){
-
-    $id=$request->input('id_prestador');
-	$consulta= Vehiculo::where('id_prestador',$id)->take(1)->first();
-		if (empty($consulta)) {
-			return 'error no encontrado';
-		} else {
-
-			return response()->json(['mivehiculo'=>$mivehiculo]);
-		}
-  }
 
 }
