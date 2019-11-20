@@ -35,7 +35,7 @@ class ReservacionController extends Controller
       $data= $reservaciones->toJson();
 
     return response(['reservaciones'=>$data]);
-
+    
     }
 
     //Metodo que crea un reservacion nuevo
@@ -74,14 +74,12 @@ class ReservacionController extends Controller
     //metodo que actualiza la informacion de la reservacion
     public function actualizar_reservacion(Reservacion $reservacion,Request $request){
         $request->validate([
-            'origen'=> ['required', 'string'],
-            'destino'=> ['required', 'string'],
-            'origenLatLong' => ['required', 'string'],
-            'destinoLatLong'=> ['required', 'string'],
-            'distancia' => ['required'],
-            'seguro'=> ['required'],
-            'numero_pisos'=> ['required', 'integer'],
-            'fecha_registro'=> ['required'],
+            'origen'=> ['string'],
+            'destino'=> ['string'],
+            'origenLatLong' => ['string'],
+            'destinoLatLong'=> ['string'],
+            'numero_pisos'=> ['integer'],
+            'status'=> ['integer'],
         ]);
         $reservacion->fill($request->all());
         $reservacion ->save();
