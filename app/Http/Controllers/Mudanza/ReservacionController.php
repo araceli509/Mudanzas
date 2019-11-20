@@ -26,15 +26,15 @@ class ReservacionController extends Controller
         ->where('status', '=','1')
         ->get());
     }
-    public function reservaciones(Request $request){
-  		 $id=$request->id;
-      $reservaciones= Reservacion::with('Cliente')->where('id_reservacion','=',$id)
+    public function reservaciones($id){
+
+      $reservaciones= Reservacion::with('Cliente')->where('id_prestador','=',$id)
         ->where('status', '=','1')
         ->get();
 
-      $data= $reservaciones->toJson();
-
-    return response(['reservaciones'=>$data]);
+      $data= $reservaciones->toArray();
+    // return $data;
+    return response(["reservacion"=>$data]);
 
     }
 
@@ -48,7 +48,7 @@ class ReservacionController extends Controller
             'destino'=> ['required', 'string'],
             'origenLatLong' => ['required', 'string'],
             'destinoLatLong'=> ['required', 'string'],
-            'distancia'=> ['required'], 
+            'distancia'=> ['required'],
             'seguro'=> ['required'],
             'numero_pisos'=> ['required', 'integer'],
         ]);
