@@ -79,3 +79,5 @@ class ClienteController extends Controller
         return response()->json(['Exito'=>'Eliminado correctamente']);
        }
 }
+
+//prueba
