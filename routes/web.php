@@ -40,5 +40,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-/**PRESTADOR DE SERVICIO */
+/*********************************PRESTADOR DE SERVICIO *********************************/
 Route::get('prestador/dashboard','Mudanza\PrestadorServicioController@dashboard');
+Route::get('prestador/pendientes','Mudanza\PrestadorServicioController@prestadores_pendientes');
+Route::get('prestador/detalles/{id}','Mudanza\PrestadorServicioController@ver_detalles_prestador_pendiente');

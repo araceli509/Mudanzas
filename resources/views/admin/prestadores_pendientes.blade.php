@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 @section('title')
     SOLICITUDES PENDIENTES
 @endsection
@@ -47,7 +49,7 @@
                             <td>{{$p->direccion}}</td>
                             <td>{{$p->telefono}}</td>
                             <td>{{$p->correo}}</td>
-                            <td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
+                            <td align="center"><a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a></td>
                         </tr>  
                       @endforeach 
                   </tbody>
