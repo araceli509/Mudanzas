@@ -78,22 +78,51 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
             </div>
+            <div class="content">
+              <div class="row">
+                  <!-- Team Member 1 -->
+                  <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow">
+                      <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
+                      <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Team Member</h5>
+                        <div class="card-text text-black-50">Web Developer</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Team Member 2 -->
+                  <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow">
+                      <img src="https://source.unsplash.com/9UVmlIb0wJU/500x350" class="card-img-top" alt="...">
+                      <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Team Member</h5>
+                        <div class="card-text text-black-50">Web Developer</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Team Member 3 -->
+                  <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow">
+                      <img src="https://source.unsplash.com/sNut2MqSmds/500x350" class="card-img-top" alt="...">
+                      <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Team Member</h5>
+                        <div class="card-text text-black-50">Web Developer</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Team Member 4 -->
+                  <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow">
+                      <img src="https://source.unsplash.com/ZI6p3i9SbVU/500x350" class="card-img-top" alt="...">
+                      <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Team Member</h5>
+                        <div class="card-text text-black-50">Web Developer</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.row -->
         </div>
     </body>
 </html>

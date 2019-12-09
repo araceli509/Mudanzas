@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -37,3 +38,7 @@ Route::get('mudanza/listarmisservicios/{id}','Mudanza\MudanzasController@listarM
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+/**PRESTADOR DE SERVICIO */
+Route::get('prestador/dashboard','Mudanza\PrestadorServicioController@dashboard');

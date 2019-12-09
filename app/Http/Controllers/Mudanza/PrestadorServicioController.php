@@ -36,6 +36,10 @@ class PrestadorServicioController extends Controller
 		->get()]);
 	}
 
+	public function dashboard(){
+		return view('admin.dashboard');
+	}
+
 	public function verprestadorporhora($horainicio){
 		$prestador = PrestadorServicio::join('horario_tarifa','prestador_servicio.id_prestador','=','horario_tarifa.id_prestador')
 		->join('vehiculos2','prestador_servicio.id_prestador','=','vehiculos2.id_prestador')
