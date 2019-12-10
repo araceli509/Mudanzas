@@ -10,7 +10,7 @@ class PrestadorServicio extends Model
     protected $primaryKey="id_prestador";
     public $timestamps=false;
 
-    protected $fillable=['nombre','apellidos','direccion','telefono','correo','codigo_postal','foto_perfil','status','solicitud','foto_perfil'];
+    protected $fillable=['nombre','apellidos','direccion','telefono','correo','codigo_postal','status','solicitud','foto_perfil'];
 
     public function MisSolicitudes()
     {

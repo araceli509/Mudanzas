@@ -45,4 +45,13 @@ class PrestadorServicioController extends Controller
         ->get();
 		  return response()->json(['prestador'=>$prestador]);
 	}
+
+	//Metodo que busca un Prestador por medio de su id
+	public function busquedaPrestadorServicio_id(Request $request){
+		$id=$request->id;
+		return response()->json($id=PrestadorServicio::select('nombre','apellidos','direccion','telefono','correo','codigo_postal','status','solicitud','foto_perfil')
+	   ->where('id_prestador','=',$id)
+	   ->where('status', '=','1')
+	   ->get());
+   }
 }

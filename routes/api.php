@@ -63,6 +63,7 @@ Route::group(['prefix'=>'auth'],function(){
         Route::get('ultimo','Mudanza\PrestadorServicioController@ultimo_registro');
         Route::get('buscar/{correo}','Mudanza\PrestadorServicioController@buscar_correo');
         Route::get('horario_tarifa/{horainicio}','Mudanza\PrestadorServicioController@verprestadorporhora');
+        Route::get('busquedaprestador_id/{id}','Mudanza\PrestadorServicioController@busquedaPrestadorServicio_id');
      });
 
       /**********************************VEHICULO ************************************************ */
