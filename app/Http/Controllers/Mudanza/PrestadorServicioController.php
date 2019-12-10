@@ -36,6 +36,24 @@ class PrestadorServicioController extends Controller
 		->get()]);
 	}
 
+	public function dashboard(){
+		return view('admin.dashboard');
+	}
+
+	public function prestadores_pendientes(){
+		$prestador=PrestadorServicio::select('id_prestador','nombre','apellidos','direccion','telefono','correo')
+		->where('solicitud','=','0')
+		->where('status','=','0')
+		->get();
+		return view('admin.prestadores_pendientes')->with('prestador',$prestador);
+	}
+
+	public function ver_detalles_prestador_pendiente($id){
+		$prestador=PrestadorServicio::find($id);
+		return view('admin.detalles_prestador_pendiente')->with('prestador',$prestador);
+	}
+
+
 	public function verprestadorporhora($horainicio){
 		$prestador = PrestadorServicio::join('horario_tarifa','prestador_servicio.id_prestador','=','horario_tarifa.id_prestador')
 		->join('vehiculos2','prestador_servicio.id_prestador','=','vehiculos2.id_prestador')
