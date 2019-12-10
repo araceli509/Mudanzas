@@ -67,7 +67,8 @@ class PrestadorServicioController extends Controller
 	//Metodo que busca un Prestador por medio de su id
 	public function busquedaPrestadorServicio_id($id){
 		$prestador = PrestadorServicio::join('ranking','prestador_servicio.id_prestador','=','ranking.id_prestador')
-		->select('prestador_servicio.nombre','prestador_servicio.apellidos','prestador_servicio.direccion','prestador_servicio.telefono','prestador_servicio.correo','prestador_servicio.codigo_postal','prestador_servicio.foto_perfil','ranking.valoracion')
+		->join('horario_tarifa','prestador_servicio.id_prestador','=','horario_tarifa.id_prestador')
+		->select('prestador_servicio.nombre','prestador_servicio.apellidos','prestador_servicio.direccion','prestador_servicio.telefono','prestador_servicio.correo','prestador_servicio.codigo_postal','prestador_servicio.foto_perfil','ranking.valoracion','horario_tarifa.precio')
 		->where('prestador_servicio.id_prestador','=',$id)
 	   ->where('prestador_servicio.status', '=','1')
         ->get();
