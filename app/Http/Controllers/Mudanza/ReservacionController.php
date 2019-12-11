@@ -30,7 +30,7 @@ class ReservacionController extends Controller
     public function buscar_reservacion(Request $request){
         $id=$request->id;
 
-        return response()->json(['reservaciones'=>$id=Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','distancia','seguro','numero_pisos','monto')
+        return response()->json(['reservaciones'=>$id=Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','distancia','seguro','numero_pisos','monto','status')
         ->where('id_cliente','=',$id)
         ->get()]);
     }
