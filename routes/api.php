@@ -26,6 +26,7 @@ Route::group(['prefix'=>'auth'],function(){
     Route::post('agregar_cliente','Mudanza\ClienteController@agregar_cliente');
     Route::post('actualizar_cliente/{cliente}','Mudanza\ClienteController@actualizar_cliente');
     Route::post('eliminar_cliente/{id}','Mudanza\ClienteController@eliminar_cliente');
+    Route::get('busquedacliente_correo/{correo}','Mudanza\ClienteController@busquedacliente_correo');
     });
 
     Route::group(['prefix'=>'reservacion','headers' => ['Accept' => 'application/json']],function(){
