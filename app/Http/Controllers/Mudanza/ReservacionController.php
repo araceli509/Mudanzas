@@ -26,6 +26,15 @@ class ReservacionController extends Controller
         ->where('status', '=','1')
         ->get());
     }
+
+    public function buscar_reservacion(Request $request){
+        $id=$request->id;
+
+        return response()->json($id=Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','distancia','seguro','numero_pisos','monto')
+        ->where('id_cliente','=',$id)
+        ->get());
+    }
+
     public function reservaciones($id){
 
       $reservaciones= Reservacion::with('Cliente')->where('id_prestador','=',$id)
