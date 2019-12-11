@@ -37,6 +37,14 @@ class ReservacionController extends Controller
     return response(["reservaciones"=>$data]);
 
     }
+
+    public function buscarreservacionporusuario($ide){
+        return response()->json(['reservacion'=>$id=Reservacion::select('fecha_hora','origen','destino','monto','status')
+        ->where('id_cliente','=',$ide)
+        ->where('status', '=','1')
+        ->get()]);
+    }
+
     public function FunctionName($value='')
     {
       // code...
