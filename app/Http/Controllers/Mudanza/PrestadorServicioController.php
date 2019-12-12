@@ -70,10 +70,10 @@ class PrestadorServicioController extends Controller
 		->join('horario_tarifa','prestador_servicio.id_prestador','=','horario_tarifa.id_prestador')
 		->join('vehiculos2','prestador_servicio.id_prestador','=','vehiculos2.id_prestador')
 		->join('comentario','prestador_servicio.id_prestador','=','comentario.id_prestador')
-		->select('prestador_servicio.nombre','prestador_servicio.apellidos','prestador_servicio.direccion','prestador_servicio.telefono','prestador_servicio.correo','prestador_servicio.codigo_postal','prestador_servicio.foto_perfil','ranking.valoracion','horario_tarifa.precio','horario_tarifa.hora_inicio','horario_tarifa.hora_salida','vehiculos2.foto_frontal','vehiculos2.foto_lateral','vehiculos2.foto_trasera','vehiculos2.capacidad_carga','vehiculos2.placas','comentario.id_cliente','comentario.descripcion','comentario.fecha_comentario')
+		->select('prestador_servicio.nombre','prestador_servicio.apellidos','prestador_servicio.direccion','prestador_servicio.telefono','prestador_servicio.correo','prestador_servicio.codigo_postal','prestador_servicio.foto_perfil','ranking.valoracion','horario_tarifa.precio','horario_tarifa.hora_inicio','horario_tarifa.hora_salida','vehiculos2.foto_frontal','vehiculos2.foto_lateral','vehiculos2.foto_trasera','vehiculos2.largo','vehiculos2.ancho','vehiculos2.alto','vehiculos2.placas','comentario.id_cliente','comentario.descripcion','comentario.fecha_comentario')
 		->where('prestador_servicio.id_prestador','=',$id)
 	   ->where('prestador_servicio.status', '=','1')
         ->get();
 		  return response()->json(['prestador'=>$prestador]);
    }
-}
+	}

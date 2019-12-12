@@ -10,5 +10,5 @@ class Vehiculo extends Model
     protected $primaryKey="id_vehiculo";
     public $timestamps=false;
 
-    protected $fillable=['id_prestador','modelo','placas','capacidad_carga','foto_frontal','foto_lateral','foto_trasera'];
+    protected $fillable=['id_prestador','modelo','placas','foto_frontal','foto_lateral','foto_trasera','largo','ancho','alto','capacidad'];
 }
