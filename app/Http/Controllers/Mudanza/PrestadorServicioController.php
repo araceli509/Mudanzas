@@ -23,7 +23,7 @@ class PrestadorServicioController extends Controller
     }
 
     public function ultimo_registro(){
-        $prestador=PrestadorServicio::all();
+        $prestador=PrestadorServicio::all()->last();
 		return response()->json(['Prestador'=>$prestador]);
 	}
 	
