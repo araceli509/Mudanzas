@@ -12,7 +12,9 @@ class VehiculoController extends Controller
         $id_prestador=$request->id_prestador;
         $modelo=$request->modelo;
         $placas=$request->placas;
-        $capacidad_carga=$request->capacidad_carga;
+        $largo=$request->largo;
+        $ancho=$request->ancho;
+        $alto=$request->alto;
         $foto_frontal=$request->foto_frontal;
         $foto_lateral=$request->foto_lateral;
         $foto_trasera=$request->foto_trasera;
@@ -20,7 +22,9 @@ class VehiculoController extends Controller
             'id_prestador' => $id_prestador,
             'modelo' => $modelo,
             'placas' => $placas,
-            'capacidad_carga' => $capacidad_carga,
+            'largo' => $largo,
+            'ancho'=>$ancho,
+            'alto'=>$alto,
             'foto_frontal' => $foto_frontal,
             'foto_lateral' => $foto_lateral,
             'foto_trasera' => $foto_trasera
