@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 use App\Models\Cliente;
+use App\Models\PrestadorServicio;
 use Illuminate\Support\Facades\Validator;
 
 class ClienteController extends Controller
@@ -34,6 +35,12 @@ class ClienteController extends Controller
        ->where('status', '=','1')
        ->get()]);
    }
+   public function busquedaPrestador($correo){
+         return response()->json(['prestador'=>$id=PrestadorServicio::select('id_prestador')
+        ->where('correo','=',$correo)
+        ->where('status', '=','1')
+        ->get()]);
+    }
 
     //Metodo que crea un cliente nuevo
    public function agregar_cliente(Request $request){
