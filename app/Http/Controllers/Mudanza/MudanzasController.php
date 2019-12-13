@@ -39,7 +39,7 @@ class MudanzasController extends Controller
   }
 
   public function mismudanzasCliente($id){
-    $mudanzas= Cliente::with('mismudanzas')->where('id_cliente','=',$id)->get();
+    $mudanzas= Cliente::With('mudanzas')->where('id_cliente',$id)->get();
 
     $data= $mudanzas->toArray();
   // return $data;
