@@ -76,4 +76,10 @@ class PrestadorServicioController extends Controller
         ->get();
 		  return response()->json(['prestador'=>$prestador]);
    }
+  
+
+
+
+   }
+
 }
