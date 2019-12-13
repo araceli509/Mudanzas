@@ -16,6 +16,7 @@ class ServiciosExtrasController extends Controller
         return response()->json(['servicios_extras'=>$id=Horario_Tarifa::select('dias','hora_inicio','hora_salida','costoXcargador','costoUnitarioCajaG','costoUnitarioCajaM','costoUnitarioCajaC','precio')
         ->where('id_prestador','=',$id)
         ->get()]);
+        
 
     }
     public function insertar_servicios_extras(Request $request){
@@ -32,14 +33,16 @@ class ServiciosExtrasController extends Controller
         ]);
         return response()->json(['a huevo'=>'Si salio']);
     }
+    
 
-  /*  public function actualizar_servicios_extras(Horario_Tarifa $horario_tarifa, Request $request){
+   /*public function actualizar_servicios_extras( Hora_Tarifa $seviciosExtra,Request $request ){
+       //$seviciosExtra= Horario_Tarifa::select('*')->where('id_prestador','=', $id);
+       
+       $seviciosExtra->fill($request->all());
+       $seviciosExtra->save();
+
+        return  response()->json([$id_horario]);
         
-        $aux-> mostrar_servicios_Extras_XidPrestador($request);
-        $aux->
-        $horario_tarifa->fill($aux->all());
-        $horario_tarifa->save();
-        return response()->json(['ya '=>'picho wongnes']);
-    }*/
+     } */
 
 }

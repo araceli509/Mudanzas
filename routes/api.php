@@ -83,9 +83,10 @@ Route::group(['prefix'=>'auth'],function(){
      Route::group(['prefix'=>'Servicios_Extras'],function(){
          Route::post('insertar_Servicios_Extras','Mudanza\ServiciosExtrasController@insertar_servicios_extras');
          Route::get('mostrar_Servicios_Extras_Xid_Prestador/{id}','Mudanza\ServiciosExtrasController@mostrar_servicios_Extras_XidPrestador');
-         Route::post('actualizar_Servicios_Extras/','Mudanza\ServiciosExtrasController@actualizar_servicios_extras');
-     });
-      /**********************************VEHICULO ************************************************ */
+         //Route::post('actualizar_Servicios_Extras/{horas_tarifa}','Mudanza\ServiciosExtrasController@actualizar_servicios_extras');
+     });       //Route::post('actualizar_cliente/{cliente}','Mudanza\ClienteController@actualizar_cliente');
+
+      /**********************************VEHICULO *********************************************** */
       Route::group(['prefix'=>'vehiculo'],function(){
         Route::post('insertar','Mudanza\VehiculoController@insertar');
         Route::get('listar','Mudanza\VehiculoController@listar_vehiculos');
