@@ -41,6 +41,17 @@ class ComentarioController extends Controller
         ->where('status', '=','1')
         ->get());
     }
+
+     //Metodo que busca un comentario por medio de su id
+	public function busquedacomentario_idprestador(Request $request){
+        $id=$request->id;
+        $prestador = Comentario::join('cliente','cliente.id_cliente','=','comentario.id_cliente')->select('cliente.nombre','comentario.descripcion','comentario.fecha_comentario')
+		->where('comentario.id_prestador','=',$id)
+	   ->where('comentario.status', '=','1')
+        ->get();
+		  return response()->json(['comentario'=>$prestador]);
+   }
+   
     
     //Metodo que crea un nuevo comentario
    public function agregar_comentario(Request $request){
