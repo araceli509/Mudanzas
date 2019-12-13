@@ -10,12 +10,17 @@ class Mudanzas extends Model
     protected $primaryKey="id_mudanza";
     public $timestamps=false;
 
-    protected $fillable=['id_mudanza','id_cliente','id_prestador','origen','destino','distanci','tiempo',	'fecha_mudanza'];
+    protected $fillable=['id_mudanza','id_cliente','id_prestador','origen','destino','distanci','tiempo',	'fecha_mudanza','hora','status'];
 
     public function cliente()
     {
       return $this->belongsTo(Cliente::class,'id_cliente');
     }
+    public function prestador()
+    {
+      return $this->belongsTo(PrestadorServicio::class,'id_prestador');
+    }
+
 
 
 }

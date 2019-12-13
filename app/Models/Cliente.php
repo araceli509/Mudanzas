@@ -19,6 +19,10 @@ class Cliente extends Model
     {
       return $this->hasMany(Pago::class,'id_pago');
     }
+    public function mudanzas()
+    {
+      return $this->hasMany(Mudanzas::class,'id_cliente');
+    }
 
 
 }
