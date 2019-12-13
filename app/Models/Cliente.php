@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Mudanzas;
 use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
@@ -18,6 +18,10 @@ class Cliente extends Model
     public function misPagos()
     {
       return $this->hasMany(Pago::class,'id_pago');
+    }
+    public function mismudanzas()
+    {
+      return $this->hasMany('App\Models\Mudanzas','id_mudanza');
     }
 
 

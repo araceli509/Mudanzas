@@ -35,7 +35,6 @@ class ReservacionController extends Controller
     }
 
     public function reservaciones($id){
-
       $reservaciones= Reservacion::with('Cliente')->where('id_prestador','=',$id)
         ->where('status', '=','1')
         ->get();
