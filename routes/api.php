@@ -29,6 +29,13 @@ Route::group(['prefix'=>'auth'],function(){
     Route::get('busquedacliente_correo/{correo}','Mudanza\ClienteController@busquedacliente_correo');
     Route::get('busquedaprestador/{correo}','Mudanza\ClienteController@busquedaPrestador');
     });
+    Route::group(['prefix'=>'mudanzas'],function(){
+    Route::get('miscudanzascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasCliente');
+    Route::get('listarmismudanzas/{id_cliente}','Mudanza\MudanzasController@listarMisMudanzas');
+    Route::get('listarMisServicios/{id_prestador}','Mudanza\MudanzasController@listarMisServicios');
+
+
+    });
 
     Route::group(['prefix'=>'reservacion','headers' => ['Accept' => 'application/json']],function(){
         Route::get('listarreservaciones','Mudanza\ReservacionController@listarreservaciones');
@@ -54,7 +61,7 @@ Route::group(['prefix'=>'auth'],function(){
     Route::post('actualizar_comentario/{comentario}','Mudanza\ComentarioController@actualizar_comentario');
     Route::post('eliminar_comentario/{id}','Mudanza\ComentarioController@eliminar_comentario');
 	 });
-    //********************************Documentos***************************************************
+	//********************************Documentos***************************************************
 	Route::get('busqueda_documento/{id}','Mudanza\DocumentosController@busqueda_documentos');
 	Route::post('insertar_documento','Mudanza\DocumentosController@insertar_documentos');
 	Route::post('eliminar_documento/{id}','Mudanza\DocumentosController@eliminar_documentos');
