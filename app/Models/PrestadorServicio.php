@@ -26,7 +26,7 @@ class PrestadorServicio extends Model
     }
     public function misMudanzas()
     {
-      return $this->hasMany('App\Models\Mudanzas','id_mudanza');
+      return $this->hasMany(PrestadorServicio::class,'id_prestador');
     }
 
 }

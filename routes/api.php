@@ -31,8 +31,7 @@ Route::group(['prefix'=>'auth'],function(){
     });
     Route::group(['prefix'=>'mudanzas'],function(){
     Route::get('miscudanzascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasCliente');
-    Route::get('listarmismudanzas/{id_cliente}','Mudanza\MudanzasController@listarMisMudanzas');
-    Route::get('listarMisServicios/{id_prestador}','Mudanza\MudanzasController@listarMisServicios');
+    Route::get('listarmismudanzasprestador/{id_prestador}','Mudanza\MudanzasController@listarMisMudanzas');
 
 
     });
@@ -74,17 +73,9 @@ Route::group(['prefix'=>'auth'],function(){
         Route::get('ultimo','Mudanza\PrestadorServicioController@ultimo_registro');
         Route::get('buscar/{correo}','Mudanza\PrestadorServicioController@buscar_correo');
         Route::get('horario_tarifa/{horainicio}','Mudanza\PrestadorServicioController@verprestadorporhora');
-        Route::get('horario_tarifa/{agregarServiciosExtras}','Mudanza\PrestadorServicioController@verprestadorporhora');
         Route::get('busquedaprestador_id/{id}','Mudanza\PrestadorServicioController@busquedaPrestadorServicio_id');
      });
 
-     //********************************* Servicios Extras ******************************************************************* */
-
-     Route::group(['prefix'=>'Servicios_Extras'],function(){
-         Route::post('insertar_Servicios_Extras','Mudanza\ServiciosExtrasController@insertar_servicios_extras');
-         Route::get('mostrar_Servicios_Extras_Xid_Prestador/{id}','Mudanza\ServiciosExtrasController@mostrar_servicios_Extras_XidPrestador');
-         Route::post('actualizar_Servicios_Extras/','Mudanza\ServiciosExtrasController@actualizar_servicios_extras');
-     });
       /**********************************VEHICULO ************************************************ */
       Route::group(['prefix'=>'vehiculo'],function(){
         Route::post('insertar','Mudanza\VehiculoController@insertar');
