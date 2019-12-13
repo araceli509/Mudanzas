@@ -42,7 +42,7 @@ class ClienteController extends Controller
         ->get()]);
     }
 
-    //Metodo que crea un cliente nuevo
+
    public function agregar_cliente(Request $request){
     $request->validate([
             'nombre'=> ['required', 'string', 'max:50','unique:cliente'],
@@ -65,7 +65,6 @@ class ClienteController extends Controller
             'fecha_registro' => $request['fecha_registro'],
             'status'=>'1',
         ]);
-
         return response()->json(['Exito'=>'Registrado correctamente']);
     }
 
