@@ -31,8 +31,7 @@ Route::group(['prefix'=>'auth'],function(){
     });
     Route::group(['prefix'=>'mudanzas'],function(){
     Route::get('miscudanzascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasCliente');
-    Route::get('listarmismudanzas/{id_cliente}','Mudanza\MudanzasController@listarMisMudanzas');
-    Route::get('listarMisServicios/{id_prestador}','Mudanza\MudanzasController@listarMisServicios');
+    Route::get('listarmismudanzasprestador/{id_prestador}','Mudanza\MudanzasController@listarMisMudanzas');
 
 
     });
@@ -57,6 +56,7 @@ Route::group(['prefix'=>'auth'],function(){
 	 Route::group(['prefix'=>'comentario'],function(){
     Route::get('listarcomentario','Mudanza\ComentarioController@listarcomentarios');
     Route::get('busquedacomentario_id/{id}','Mudanza\ComentarioController@busquedacomentario_id');
+    Route::get('busquedacomentario_idprestador/{id}','Mudanza\ComentarioController@busquedacomentario_idprestador');
     Route::post('agregar_comentario','Mudanza\ComentarioController@agregar_comentario');
     Route::post('actualizar_comentario/{comentario}','Mudanza\ComentarioController@actualizar_comentario');
     Route::post('eliminar_comentario/{id}','Mudanza\ComentarioController@eliminar_comentario');
@@ -74,7 +74,6 @@ Route::group(['prefix'=>'auth'],function(){
         Route::get('ultimo','Mudanza\PrestadorServicioController@ultimo_registro');
         Route::get('buscar/{correo}','Mudanza\PrestadorServicioController@buscar_correo');
         Route::get('horario_tarifa/{horainicio}','Mudanza\PrestadorServicioController@verprestadorporhora');
-        Route::get('horario_tarifa/{agregarServiciosExtras}','Mudanza\PrestadorServicioController@verprestadorporhora');
         Route::get('busquedaprestador_id/{id}','Mudanza\PrestadorServicioController@busquedaPrestadorServicio_id');
      });
 

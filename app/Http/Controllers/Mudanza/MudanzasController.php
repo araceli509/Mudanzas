@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 use App\Models\Mudanzas;
+use App\Models\PrestadorServicio;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Validator;
 
@@ -33,13 +34,16 @@ class MudanzasController extends Controller
 
   }
 
-  function listarMisMudanzas($id_cliente){
-    $mismudanzas= Mudanzas::select('id_mudanza','id_cliente','id_prestador','origen','destino','tiempo','fecha_mudanza','hora','status')->where('id_cliente','=',$id_cliente)->get();
-    return $mismudanzas;
+  function listarMisMudanzas($id){
+    $mudanzas= PrestadorServicio::With('misMudanzas')->where('id_prestador',$id)->where('status','=','1')->get();
+
+    $data= $mudanzas->toArray();
+  // return $data;
+  return response(["mudanzas"=>$data]);
   }
 
   public function mismudanzasCliente($id){
-    $mudanzas= Cliente::with('mismudanzas')->where('id_cliente','=',$id)->get();
+    $mudanzas= Cliente::With('mudanzas')->where('id_cliente',$id)->where('status','=','1')->get();
 
     $data= $mudanzas->toArray();
   // return $data;
