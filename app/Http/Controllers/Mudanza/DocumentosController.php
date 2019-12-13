@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Mudanza;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Documentos;
-use GuzzleHttp\Client;
-use Illumninate\Support\Facades\DB;
+
 class DocumentosController extends Controller
 {   
     //funcion que inserta un documento

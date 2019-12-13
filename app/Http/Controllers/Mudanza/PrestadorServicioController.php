@@ -15,8 +15,8 @@ class PrestadorServicioController extends Controller
     	$correo=$request->correo;
     	$codigo_postal=$request->codigo_postal;
         $foto_perfil=$request->foto_perfil;
-    	$status='0';
-    	$solicitud='0';
+    	$status='1';
+    	$solicitud='1';
     	PrestadorServicio::create(['nombre'=>$nombre,'apellidos'=>$apellidos,'direccion'=>$direccion,
     	'telefono'=>$telefono,'correo'=>$correo,'codigo_postal'=>$codigo_postal,'status'=>$status,'solicitud'=>
     	$solicitud,'foto_perfil'=>$foto_perfil]);
@@ -76,4 +76,4 @@ class PrestadorServicioController extends Controller
         ->get();
 		  return response()->json(['prestador'=>$prestador]);
    }
-	}
+}

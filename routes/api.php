@@ -29,6 +29,12 @@ Route::group(['prefix'=>'auth'],function(){
     Route::get('busquedacliente_correo/{correo}','Mudanza\ClienteController@busquedacliente_correo');
     Route::get('busquedaprestador/{correo}','Mudanza\ClienteController@busquedaPrestador');
     });
+    Route::group(['prefix'=>'mudanzas'],function(){
+    Route::get('miscudanzascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasCliente');
+    Route::get('listarmismudanzasprestador/{id_prestador}','Mudanza\MudanzasController@listarMisMudanzas');
+
+
+    });
 
     Route::group(['prefix'=>'reservacion','headers' => ['Accept' => 'application/json']],function(){
         Route::get('listarreservaciones','Mudanza\ReservacionController@listarreservaciones');
