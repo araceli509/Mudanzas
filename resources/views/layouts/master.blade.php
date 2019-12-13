@@ -14,10 +14,11 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
-  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/now-ui-dashboard.css?v=1.3.0') }}" rel="stylesheet">
+  <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet">
+
 </head>
 
 <body class="">
@@ -39,43 +40,31 @@
           <li>
             <a href="./dashboard.html">
               <i class="now-ui-icons design_app"></i>
-              <p>Dashboard</p>
+              <p>Inicio</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
-              <i class="now-ui-icons education_atom"></i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li>
-            <a href="./map.html">
+            <a href="{{url('prestador/activos')}}">
               <i class="now-ui-icons location_map-big"></i>
-              <p>Maps</p>
+              <p>Prestadores de Servicio</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="{{url('prestador/pendientes')}}">
               <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
+              <p>Solicitudes Pendientes</p>
             </a>
           </li>
           <li>
             <a href="./user.html">
               <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li >
-            <a href="./tables.html">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Table List</p>
+              <p>Mudanzas</p>
             </a>
           </li>
           <li>
             <a href="./typography.html">
               <i class="now-ui-icons text_caps-small"></i>
-              <p>Typography</p>
+              <p>Configuracion</p>
             </a>
           </li>
         </ul>

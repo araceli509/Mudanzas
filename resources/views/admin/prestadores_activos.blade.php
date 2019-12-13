@@ -2,11 +2,8 @@
 
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
-
 @section('title')
-    SOLICITUDES PENDIENTES
+    PRESTADORES DE SERVICIO ACTIVOS
 @endsection
 
 @section('content')
@@ -14,7 +11,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Solicitudes pendientes</h4>
+          <h4 class="card-title">Prestadores</h4>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -52,7 +49,7 @@
                             <td>{{$p->direccion}}</td>
                             <td>{{$p->telefono}}</td>
                             <td>{{$p->correo}}</td>
-                            <td align="center"><a href="/prestador/detalles/{{$p->id_prestador}}" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a></td>
+                            <td align="center"><a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a></td>
                         </tr>  
                       @endforeach 
                   </tbody>

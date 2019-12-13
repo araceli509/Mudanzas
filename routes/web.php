@@ -43,4 +43,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 /*********************************PRESTADOR DE SERVICIO *********************************/
 Route::get('prestador/dashboard','Mudanza\PrestadorServicioController@dashboard');
 Route::get('prestador/pendientes','Mudanza\PrestadorServicioController@prestadores_pendientes');
+Route::get('prestador/activos','Mudanza\PrestadorServicioController@prestadores_activos');
 Route::get('prestador/detalles/{id}','Mudanza\PrestadorServicioController@ver_detalles_prestador_pendiente');
+Route::get('prestador/obtener/{id}','Mudanza\PrestadorServicioController@ver_detalle_prestador');
+Route::post('prestador/actualizar/{id}','Mudanza\PrestadorServicioController@aprovar_prestador');

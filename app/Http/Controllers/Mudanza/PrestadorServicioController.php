@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Mudanza;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Documentos;
 use App\Models\PrestadorServicio;
+use App\Models\Vehiculo;
+use Mail;
+use Session;
 class PrestadorServicioController extends Controller
 {
     public function insertar(Request $request){
@@ -31,8 +35,8 @@ class PrestadorServicioController extends Controller
 		$correo=$request->correo;
 		return response()->json(['Prestador'=>$prestador=PrestadorServicio::select('id_prestador')
 		->where('correo','=',$correo)
-		->where('solicitud','=','1')
-		->where('status','=','1')
+		->where('solicitud','=','0')
+		->where('status','=','0')
 		->get()]);
 	}
 
@@ -48,9 +52,50 @@ class PrestadorServicioController extends Controller
 		return view('admin.prestadores_pendientes')->with('prestador',$prestador);
 	}
 
+	public function prestadores_activos(){
+		$prestador=PrestadorServicio::select('id_prestador','nombre','apellidos','direccion','telefono','correo')
+		->where('solicitud','=','1')
+		->where('status','=','1')
+		->get();
+
+		return view('admin.prestadores_activos')->with('prestador',$prestador);
+	}
+
 	public function ver_detalles_prestador_pendiente($id){
 		$prestador=PrestadorServicio::find($id);
-		return view('admin.detalles_prestador_pendiente')->with('prestador',$prestador);
+		$documentos=Documentos::find($id);
+		$vehiculos=Vehiculo::find($id);
+		return view('admin.detalles_prestador_pendiente')->with('prestador',$prestador)
+		->with('documentos',$documentos)
+		->with('vehiculo',$vehiculos);
+	}
+
+	public function aprovar_prestador(Request $request,$id){
+		//$id=$request->id_prestador;
+		$correo=$request->correo;
+		
+		$prestador=PrestadorServicio::where('id_prestador',$id)
+		->update([
+			'status'=>'1',
+			'solicitud'=>'1'
+
+		]);
+
+		$subject = "Asunto del correo";
+        $for = "angel23.aj32@gmail.com";
+        Mail::send('admin.dashboard',$request->all(), function($msj) use($subject,$for){
+            $msj->from("angel23.aj32@gmail.com","yo");
+            $msj->subject($subject);
+            $msj->to($for);
+        });
+        return redirect()->back();
+
+		echo $id;
+	}
+
+	public function ver_detalle_prestador($id){
+		$prestador=PrestadorServicio::join('vehiculo','prestador_servicio.id_prestador','=','vehiculo.id_prestador')
+		->select('ine','licencia_conducir','tarjeta_vigente')->get();
 	}
 
 
