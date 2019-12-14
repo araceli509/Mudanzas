@@ -19,8 +19,8 @@ class PrestadorServicioController extends Controller
     	$correo=$request->correo;
     	$codigo_postal=$request->codigo_postal;
         $foto_perfil=$request->foto_perfil;
-    	$status='1';
-    	$solicitud='1';
+    	$status='0';
+    	$solicitud='0';
     	PrestadorServicio::create(['nombre'=>$nombre,'apellidos'=>$apellidos,'direccion'=>$direccion,
     	'telefono'=>$telefono,'correo'=>$correo,'codigo_postal'=>$codigo_postal,'status'=>$status,'solicitud'=>
     	$solicitud,'foto_perfil'=>$foto_perfil]);
@@ -81,14 +81,14 @@ class PrestadorServicioController extends Controller
 
 		]);
 
-		$subject = "Asunto del correo";
+		/*$subject = "Asunto del correo";
         $for = "angel23.aj32@gmail.com";
         Mail::send('admin.dashboard',$request->all(), function($msj) use($subject,$for){
             $msj->from("angel23.aj32@gmail.com","yo");
             $msj->subject($subject);
             $msj->to($for);
         });
-        return redirect()->back();
+        return redirect()->back();*/
 
 		echo $id;
 	}
