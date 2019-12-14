@@ -16,7 +16,7 @@
             <table class="table">
               <thead class=" text-primary">
                 <th>
-                  Name
+                  Nombre
                 </th>
                 <th>
                   Country

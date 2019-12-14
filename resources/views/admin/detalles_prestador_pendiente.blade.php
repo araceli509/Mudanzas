@@ -1,70 +1,116 @@
 @extends('layouts.master')
 
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 @section('title')
-    Detalles
+    SOLICITUDES PENDIENTES
 @endsection
 
 @section('content')
-  
-  <!-- Header -->
-<header class="bg-primary text-center py-5 mb-4">
-    <div class="container">
-      <h1 class="font-weight-light text-white">Meet the Team</h1>
-    </div>
-  </header>
-  
-  <!-- Page Content -->
-  <div class="container">
-    <div class="row">
-      <!-- Team Member 1 -->
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
-          <div class="card-body text-center">
-            <h5 class="card-title mb-0">Team Member</h5>
-            <div class="card-text text-black-50">Web Developer</div>
-          </div>
-        </div>
-      </div>
-      <!-- Team Member 2 -->
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="https://source.unsplash.com/9UVmlIb0wJU/500x350" class="card-img-top" alt="...">
-          <div class="card-body text-center">
-            <h5 class="card-title mb-0">Team Member</h5>
-            <div class="card-text text-black-50">Web Developer</div>
-          </div>
-        </div>
-      </div>
-      <!-- Team Member 3 -->
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="https://source.unsplash.com/sNut2MqSmds/500x350" class="card-img-top" alt="...">
-          <div class="card-body text-center">
-            <h5 class="card-title mb-0">Team Member</h5>
-            <div class="card-text text-black-50">Web Developer</div>
-          </div>
-        </div>
-      </div>
-      <!-- Team Member 4 -->
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="https://source.unsplash.com/ZI6p3i9SbVU/500x350" class="card-img-top" alt="...">
-          <div class="card-body text-center">
-            <h5 class="card-title mb-0">Team Member</h5>
-            <div class="card-text text-black-50">Web Developer</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /.row -->
-  
-  </div>
-  <!-- /.container -->
 
+<br>
+<br>
+<br>
+<button type="button" class="btn btn-secondary btn-lg btn-block">Fotos Personales</button>
+<div class="card-group">
+    <div class="card">
+      <img src="https://res.cloudinary.com/ito/c_scale,h_3171/foto_perfil/{{$prestador->foto_perfil}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Foto de perfil</h5>
+        <p class="card-text"></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://res.cloudinary.com/ito/ine/{{$documentos->ine}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Credencial de elector</h5>
+        <p class="card-text"></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-secondary btn-lg btn-block">Permisos</button>
+  <div class="card-group">
+    <div class="card">
+      <img src="https://res.cloudinary.com/ito/c_scale,h_3171/tarjeta_circulacion/{{$documentos->tarjeta_circulacion}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Tarjeta de Circulacion</h5>
+        <p class="card-text"></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+    <div class="card">
+        <img src="https://res.cloudinary.com/ito/licencia_conducir/{{$documentos->licencia_vigente}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Licencia de conducir vigente</h5>
+          <p class="card-text"></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+  </div>
+
+  <button type="button" class="btn btn-secondary btn-lg btn-block">Datos del Vehiculo</button>
+
+  <div class="card-group">
+    <div class="card">
+      <img src="https://res.cloudinary.com/ito/c_scale,h_3171/foto_frontal/{{$vehiculo->foto_frontal}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Foto Frontal</h5>
+        <p class="card-text"></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+    <div class="card">
+        <img src="https://res.cloudinary.com/ito/foto_lateral/{{$vehiculo->foto_lateral}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Foto Lateral</h5>
+          <p class="card-text"></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://res.cloudinary.com/ito/foto_trasera/{{$vehiculo->foto_trasera}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Foto Trasera</h5>
+          <p class="card-text"></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <form action="{{ url('/prestador/actualizar/'.$prestador->id_prestador) }}" method="post">
+
+    @csrf
+
+    <input type="hidden" name="id" value="{{ $prestador->id_prestador}}">
+
+           <input type="submit" class="btn btn-success" name="act" value="Aprovar">
+    </form>
 @endsection
 
 @section('scripts')
-
+    
 @endsection
-
