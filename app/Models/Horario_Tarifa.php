@@ -10,4 +10,10 @@ class Horario_Tarifa extends Model
     protected $primaryKey="id_horario";
     public $timestamps=false;
     protected $fillable=['id_prestador','dias','hora_inicio','hora_salida','costoXcargador','costoUnitarioCajaG','costoUnitarioCajaM','costoUnitarioCajaC','precio'];
+
+    public function prestador()
+    {
+      return $this->belongsTo(PrestadorServicio::class,'id_prestador');
+    }
+
 }
