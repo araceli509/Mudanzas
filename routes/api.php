@@ -55,7 +55,7 @@ Route::group(['prefix'=>'auth'],function(){
 		//********************************Comentarios***************************************************
 	 Route::group(['prefix'=>'comentario'],function(){
     Route::get('listarcomentario','Mudanza\ComentarioController@listarcomentarios');
-    Route::get('busquedacomentario_id/{id}','Mudanza\ComentarioController@busquedacomentario_id');
+    Route::get('busquedacomentario_id/{id}','Mudanza\ComentarioController@busquedacomentario_idprestador');
     Route::post('agregar_comentario','Mudanza\ComentarioController@agregar_comentario');
     Route::post('actualizar_comentario/{comentario}','Mudanza\ComentarioController@actualizar_comentario');
     Route::post('eliminar_comentario/{id}','Mudanza\ComentarioController@eliminar_comentario');
