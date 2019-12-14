@@ -28,5 +28,9 @@ class PrestadorServicio extends Model
     {
       return $this->hasMany(Mudanzas::class,'id_prestador');
     }
+    public function misTarifas(){
+      return $this->hasMany(Horario_Tarifa::class,'id_prestador');
+
+    }
 
 }

@@ -13,7 +13,7 @@ class ReservacionController extends Controller
 
 //Metodo que devuelve una lista de reservaciones registrados
     public function listarreservaciones(){
-         return response()->json(Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','distancia','seguro','numero_pisos','monto')
+         return response()->json(Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','distancia','seguro','numero_pisos','monto','numeroCajas','numTrabajadores')
          ->where('status', '=','1')
         ->get());
     }
@@ -21,7 +21,7 @@ class ReservacionController extends Controller
     //Metodo que busca un reservacion por medio de su id
 	public function busquedareservacion_id(Request $request){
 		 $id=$request->id;
-		 return response()->json($id=Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','distancia','seguro','numero_pisos','monto')
+		 return response()->json($id=Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','distancia','seguro','numero_pisos','monto','numeroCajas','numTrabajadores')
         ->where('id_reservacion','=',$id)
         ->where('status', '=','1')
         ->get());
@@ -29,7 +29,7 @@ class ReservacionController extends Controller
 
     public function buscar_reservacion(Request $request){
         $id=$request->id;
-        return response()->json(['reservaciones'=>$id=Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','distancia','seguro','numero_pisos','monto','status')
+        return response()->json(['reservaciones'=>$id=Reservacion::select('id_cliente','id_prestador','fecha_hora','origen','destino','origenLatLong','destinoLatLong','distancia','seguro','numero_pisos','monto','numeroCajas','numTrabajadores','status')
         ->where('id_cliente','=',$id)
         ->get()]);
     }
@@ -70,6 +70,8 @@ class ReservacionController extends Controller
             'distancia'=> ['required'],
             'seguro'=> ['required'],
             'numero_pisos'=> ['required', 'integer'],
+            'numeroCajas' => ['required', 'integer'],
+            'numTrabajadores' => ['required', 'integer'],
         ]);
         $reservacion = Reservacion::create([
             'id_cliente' => $request['id_cliente'],
@@ -83,6 +85,8 @@ class ReservacionController extends Controller
             'seguro' => $request['seguro'],
             'numero_pisos' => $request['numero_pisos'],
             'monto' => $request['monto'],
+            'numeroCajas' => $request['numeroCajas'],
+            'numTrabajadores' => $request['numTrabajadores'],
             'status'=>'1',
         ]);
 
@@ -98,7 +102,10 @@ class ReservacionController extends Controller
             'origenLatLong' => ['string'],
             'destinoLatLong'=> ['string'],
             'numero_pisos'=> ['integer'],
+            'numeroCajas' => ['required', 'integer'],
+            'numTrabajadores' => ['required', 'integer'],
             'status'=> ['integer'],
+            
         ]);
         $reservacion->fill($request->all());
         $reservacion ->save();

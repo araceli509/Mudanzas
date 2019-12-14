@@ -55,8 +55,7 @@ Route::group(['prefix'=>'auth'],function(){
 		//********************************Comentarios***************************************************
 	 Route::group(['prefix'=>'comentario'],function(){
     Route::get('listarcomentario','Mudanza\ComentarioController@listarcomentarios');
-    Route::get('busquedacomentario_id/{id}','Mudanza\ComentarioController@busquedacomentario_id');
-    Route::get('busquedacomentario_idprestador/{id}','Mudanza\ComentarioController@busquedacomentario_idprestador');
+    Route::get('busquedacomentario_id/{id}','Mudanza\ComentarioController@busquedacomentario_idprestador');
     Route::post('agregar_comentario','Mudanza\ComentarioController@agregar_comentario');
     Route::post('actualizar_comentario/{comentario}','Mudanza\ComentarioController@actualizar_comentario');
     Route::post('eliminar_comentario/{id}','Mudanza\ComentarioController@eliminar_comentario');
@@ -88,6 +87,12 @@ Route::group(['prefix'=>'auth'],function(){
      Route::group(['prefix'=>'documentos'],function(){
         Route::post('insertar','Mudanza\DocumentosController@insertar_documentos');
         Route::get('listar','Mudanza\DocumentosController@listar_documentos');
+     });
+
+     Route::group(['prefix'=>'tarifa'],function(){
+        Route::post('servicioextra/insetar/','Mudanza\ServiciosExtrasController@insertar_servicios_extras');
+        Route::post('servicioextra/actualizar/','Mudanza\ServiciosExtrasController@actualizar_servicios_extras');
+
      });
 
 });

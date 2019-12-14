@@ -35,7 +35,7 @@ class MudanzasController extends Controller
   }
 
   function listarMisMudanzas($id){
-    $mudanzas= PrestadorServicio::With('misMudanzas')->where('id_prestador',$id)->where('status','=','1')->get();
+    $mudanzas= Mudanzas::With('cliente')->where('id_prestador',$id)->where('status','=','1')->get();
 
     $data= $mudanzas->toArray();
   // return $data;
