@@ -88,10 +88,10 @@ Route::group(['prefix'=>'auth'],function(){
         Route::get('listar','Mudanza\DocumentosController@listar_documentos');
      });
 
-     Route::group(['prefix'=>'tarifa'],function(){
-        Route::post('servicioextra/insetar/','Mudanza\ServiciosExtrasController@insertar_servicios_extras');
-        Route::post('servicioextra/actualizar/','Mudanza\ServiciosExtrasController@actualizar_servicios_extras');
-
+     Route::group(['prefix'=>'servicios'],function(){
+        Route::post('insertar_servicio','Mudanza\ServiciosExtrasController@insertar');
+        Route::post('actualizar_servicio/{id}','Mudanza\ServiciosExtrasController@actualizar');
+        Route::get('mostrar_servicios/{id}','Mudanza\ServiciosExtrasController@mostrar');
      });
      /**********************************Ranking***************************************************** */
 

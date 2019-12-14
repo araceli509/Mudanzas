@@ -11,15 +11,13 @@ use App\Http\Controllers\Controller;
 class ServiciosExtrasController extends Controller
 {
 
-    public function mostrar_servicios_Extras_XidPrestador(Request $request){
+    public function mostrar(Request $request){
         $id=$request->id;
         return response()->json(['servicios_extras'=>$id=Horario_Tarifa::select('dias','hora_inicio','hora_salida','costoXcargador','costoUnitarioCajaG','costoUnitarioCajaM','costoUnitarioCajaC','precio')
         ->where('id_prestador','=',$id)
         ->get()]);
-
-
     }
-    public function insertar_servicios_extras(Request $request){
+    public function insertar(Request $request){
         $seviciosExtra= Horario_Tarifa::create([
             'id_prestador'=>$request['id_prestador'],
             'dias'=> $request['dias'],
@@ -35,7 +33,7 @@ class ServiciosExtrasController extends Controller
     }
 
 
-   public function actualizar_servicios_extras(Request $request){
+   public function actualizar(Request $request){
        $id = $request->id_prestador;
        $horario= Horario_Tarifa::select()->where('id_prestador',$id)->take(1)->first();
        $horario->dias=$request->dias;
