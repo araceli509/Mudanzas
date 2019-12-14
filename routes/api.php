@@ -50,7 +50,6 @@ Route::group(['prefix'=>'auth'],function(){
 
 
 	Route::get('busqueda_id_comentario/{id}','Mudanza\ComentarioController@busqueda_id_comentario');
-	Route::get('busqueda_id_ranking/{id}','Mudanza\RankingController@busqueda_id_ranking');
 
 		//********************************Comentarios***************************************************
 	 Route::group(['prefix'=>'comentario'],function(){
@@ -94,5 +93,11 @@ Route::group(['prefix'=>'auth'],function(){
         Route::post('servicioextra/actualizar/','Mudanza\ServiciosExtrasController@actualizar_servicios_extras');
 
      });
+     /**********************************Ranking***************************************************** */
+
+     Route::group(['prefix'=>'ranking'],function(){
+      Route::get('busqueda_id_ranking/{id}','Mudanza\RankingController@busqueda_id_ranking');
+      Route::post('agregar_ranking','Mudanza\RankingController@agregar_rankin');
+   });
 
 });

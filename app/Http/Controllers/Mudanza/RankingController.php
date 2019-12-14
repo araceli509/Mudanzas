@@ -16,12 +16,18 @@ class RankingController extends Controller
         ->where('id_ranking','=',$id)
         ->get());
 	}
-
-	 public function busqueda_ranking($dato){
-        $respuesta=$this->peticion('GET',"http://mudanzasito.000webhostapp.com/api/auth/busqueda_id_ranking/{$dato}");
-        $datos=json_decode($respuesta);
-        return response()->json($datos);
-    }  
+    
+    public function agregar_rankin(Request $request){
+            $request->validate([
+                'id_prestador'=> ['required'],
+                'valoracion'=> ['required']
+            ]);
+            $cliente = Ranking::create([
+                'id_prestador' => $request['id_prestador'],
+                'valoracion' => $request['valoracion']
+            ]);
+            return response()->json(['Exito'=>'Registrado correctamente']);
+        }
     
     	
 }

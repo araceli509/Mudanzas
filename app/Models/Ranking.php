@@ -9,6 +9,5 @@ class Ranking extends Model
     protected $table="ranking";
     protected $primaryKey="id_ranking";
     public $timestamps=false;
-
     protected $fillable=['id_ranking','id_prestador','valoracion'];
 }
