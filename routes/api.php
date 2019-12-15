@@ -32,6 +32,8 @@ Route::group(['prefix'=>'auth'],function(){
     Route::group(['prefix'=>'mudanzas'],function(){
     Route::get('miscudanzascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasCliente');
     Route::get('listarmismudanzasprestador/{id_prestador}','Mudanza\MudanzasController@listarMisMudanzas');
+    Route::get('listarmismudanzaspendientes/{id_prestador}','Mudanza\MudanzasController@misMudanzasenEspera');
+    Route::get('mudanzaactiva/{id_prestador}','Mudanza\MudanzasController@miMudanzaActiva');
 
 
     });
@@ -90,7 +92,7 @@ Route::group(['prefix'=>'auth'],function(){
 
      Route::group(['prefix'=>'servicios'],function(){
         Route::post('insertar_servicio','Mudanza\ServiciosExtrasController@insertar');
-        Route::post('insertar_servicio_ranking','Mudanza\ServiciosExtrasController@insertarconranking');
+        Route::post('insertar_servicio_ranking','Mudanza\ServiciosExtrasController@insertarconrankingconcomentario');
         Route::post('actualizar_servicio/{id}','Mudanza\ServiciosExtrasController@actualizar');
         Route::get('mostrar_servicios/{id}','Mudanza\ServiciosExtrasController@mostrar');
      });

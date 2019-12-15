@@ -35,11 +35,26 @@ class MudanzasController extends Controller
   }
 
   function listarMisMudanzas($id){
+    $mudanzas= Mudanzas::With('cliente')->where('id_prestador',$id)->where('status','=','2')->get();
+
+    $data= $mudanzas->toArray();
+  // return $data;
+  return response(["mudanzas"=>$data]);
+  }
+
+  public function misMudanzasenEspera($id)
+  {
     $mudanzas= Mudanzas::With('cliente')->where('id_prestador',$id)->where('status','=','1')->get();
 
     $data= $mudanzas->toArray();
   // return $data;
   return response(["mudanzas"=>$data]);
+  }
+  public function miMudanzaActiva($id)
+  {
+    $mudanzas= Mudanzas::With('cliente')->where('id_prestador',$id)->where('status','=','3')->get();  
+    $data= $mudanzas->toArray();
+    return response(["mudanzas"=>$data]);
   }
 
   public function mismudanzasCliente($id){
