@@ -28,6 +28,9 @@ Route::group(['prefix'=>'auth'],function(){
     Route::post('eliminar_cliente/{id}','Mudanza\ClienteController@eliminar_cliente');
     Route::get('busquedacliente_correo/{correo}','Mudanza\ClienteController@busquedacliente_correo');
     Route::get('busquedaprestador/{correo}','Mudanza\ClienteController@busquedaPrestador');
+    Route::get('busquedacliente_correo_reservacion/{correo}','Mudanza\ClienteController@busquedacliente_correo_reservacion');
+
+    
     });
     Route::group(['prefix'=>'mudanzas'],function(){
     Route::get('miscudanzascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasCliente');
