@@ -46,4 +46,13 @@ Route::get('prestador/pendientes','Mudanza\PrestadorServicioController@prestador
 Route::get('prestador/activos','Mudanza\PrestadorServicioController@prestadores_activos');
 Route::get('prestador/detalles/{id}','Mudanza\PrestadorServicioController@ver_detalles_prestador_pendiente');
 Route::get('prestador/obtener/{id}','Mudanza\PrestadorServicioController@ver_detalle_prestador');
-Route::post('prestador/actualizar/{id}','Mudanza\PrestadorServicioController@aprovar_prestador');
+Route::post('prestador/actualizar/{id}','Mudanza\PrestadorServicioController@aprobar_prestador');
+
+/******************************************Correo*************************************************** */
+
+/*Route::get('/',function(){
+    Mail::send('mail.entrenamientoWeb',['texto'=> 'Eloquent'], function($m){
+        $m->from('mudanzas.ito2019@gmail.com', 'Elton');
+        $m->to('daniel.sosa.ds22@gmail.com');
+    });
+});*/
