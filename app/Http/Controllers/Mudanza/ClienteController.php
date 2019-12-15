@@ -36,12 +36,13 @@ class ClienteController extends Controller
        ->get()]);
    }
    public function busquedacliente_correo_reservacion($correo){
-$prestador=Cliente::join('reservacion','cliente.id_cliente','=','reservacion.id_cliente')
-        ->select('reservacion.fecha_hora','reservacion.origen','reservacion.destino','reservacion.monto','reservacion.status')
-        ->where('cliente.correo','=',$correo)
-        ->where('reservacion.status', '!=','0')
-        ->get();
-        return response()->json(['reservacion'=>$prestador]);
+    $prestador=Cliente::join('reservacion','cliente.id_cliente','=','reservacion.id_cliente')
+    ->join('prestador_servicio','reservacion.id_prestador','=','prestador_servicio.id_prestador')
+    ->select('prestador_servicio.nombre','reservacion.fecha_hora','reservacion.origen','reservacion.destino','reservacion.monto','reservacion.status')
+     ->where('cliente.correo','=',$correo)
+     ->where('reservacion.status', '!=','0')
+     ->get();
+     return response()->json(['reservacion'=>$prestador]);
 }
 
    public function busquedaPrestador($correo){
