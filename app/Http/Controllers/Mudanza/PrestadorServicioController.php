@@ -107,6 +107,7 @@ class PrestadorServicioController extends Controller
 		->join('vehiculos2','prestador_servicio.id_prestador','=','vehiculos2.id_prestador')
 		->join('ranking','prestador_servicio.id_prestador','=','ranking.id_prestador')
 		->select('prestador_servicio.id_prestador','prestador_servicio.nombre','vehiculos2.largo','vehiculos2.ancho','vehiculos2.alto','horario_tarifa.precio','ranking.valoracion')
+		->where('prestador_servicio.status', '=','1')
 		->WhereRaw('? BETWEEN horario_tarifa.hora_inicio and horario_tarifa.hora_salida',$horainicio)
         ->get();
 		  return response()->json(['prestador'=>$prestador]);
