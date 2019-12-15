@@ -27,12 +27,11 @@ class PrestadorServicioController extends Controller
     }
 
     public function ultimo_registro(){
-		if(PrestadorServicio::all()->count()==0){
-			return response()->json(['Prestador'=>0]);
-		}else {
+		//{"id_prestador":1};
+		//$prestador=PrestadorServicio::all();
 			$prestador=PrestadorServicio::all();
 			return response()->json(['Prestador'=>$prestador]);
-		}
+		
 	}
 	
 	public function buscar_correo(Request $request){
