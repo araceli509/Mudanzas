@@ -41,13 +41,17 @@ class PrestadorServicioController extends Controller
 		->get()]);
 	}
 
-	public function correo_activo($correo){
+	public function correo_activo(Request $request){
+		//$prestador=PrestadorServicio::select('id_prestador','status','solicitud')
+		//->where('correo','=',$correo)s
+		//->where('status','=','1')
+		//->where('solicitud','=','1')
+		//->get();
+		//$status=$prestador->status;
+		$correo=$request->correo;
 		$prestador=PrestadorServicio::select('id_prestador','status','solicitud')
 		->where('correo','=',$correo)
-		->where('status','=','1')
-		->where('solicitud','=','1')
 		->get();
-
 		return response()->json(['Prestador'=>$prestador]);
 	}
 
