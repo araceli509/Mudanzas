@@ -24,11 +24,9 @@ class PrestadorServicioController extends Controller
     	PrestadorServicio::create(['nombre'=>$nombre,'apellidos'=>$apellidos,'direccion'=>$direccion,
     	'telefono'=>$telefono,'correo'=>$correo,'codigo_postal'=>$codigo_postal,'status'=>$status,'solicitud'=>
     	$solicitud,'foto_perfil'=>$foto_perfil]);
-    }
+    } 
 
     public function ultimo_registro(){
-		//{"id_prestador":1};
-		//$prestador=PrestadorServicio::all();
 			$prestador=PrestadorServicio::all();
 			return response()->json(['Prestador'=>$prestador]);
 		
@@ -41,6 +39,16 @@ class PrestadorServicioController extends Controller
 		->where('solicitud','=','0')
 		->where('status','=','0')
 		->get()]);
+	}
+
+	public function correo_activo($correo){
+		$prestador=PrestadorServicio::select('id_prestador','status','solicitud')
+		->where('correo','=',$correo)
+		->where('status','=','1')
+		->where('solicitud','=','1')
+		->get();
+
+		return response()->json(['Prestador'=>$prestador]);
 	}
 
 	public function dashboard(){
@@ -73,27 +81,22 @@ class PrestadorServicioController extends Controller
 		->with('vehiculo',$vehiculos);
 	}
 
-	public function aprovar_prestador(Request $request,$id){
-		//$id=$request->id_prestador;
-		$correo=$request->correo;
-		
+	public function aprobar_prestador(Request $request,$id){
+		$prestador= PrestadorServicio::find($id);
+		$correo_user=$prestador->correo;
+
+		Mail::send('mail.entrenamientoWeb', ['user' => $prestador->nombre], function ($m) use ($prestador) {
+            $m->from('mudanzas.ito2019@gmail.com', 'Mudanzito :D');
+			//$m->to('ricardo.oax@gmail.com', 'Ricardo baños')->subject('Recordatorio');
+			$m->to($prestador->correo, $prestador->nombre)->subject('Recordatorio');
+        });
 		$prestador=PrestadorServicio::where('id_prestador',$id)
 		->update([
 			'status'=>'1',
 			'solicitud'=>'1'
 
 		]);
-
-		/*$subject = "Asunto del correo";
-        $for = "angel23.aj32@gmail.com";
-        Mail::send('admin.dashboard',$request->all(), function($msj) use($subject,$for){
-            $msj->from("angel23.aj32@gmail.com","yo");
-            $msj->subject($subject);
-            $msj->to($for);
-        });
-        return redirect()->back();*/
-
-		echo $id;
+		echo $correo_user;
 	}
 
 	public function ver_detalle_prestador($id){
