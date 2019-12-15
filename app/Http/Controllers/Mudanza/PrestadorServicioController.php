@@ -27,8 +27,6 @@ class PrestadorServicioController extends Controller
     } 
 
     public function ultimo_registro(){
-		//{"id_prestador":1};
-		//$prestador=PrestadorServicio::all();
 			$prestador=PrestadorServicio::all();
 			return response()->json(['Prestador'=>$prestador]);
 		
@@ -41,6 +39,16 @@ class PrestadorServicioController extends Controller
 		->where('solicitud','=','0')
 		->where('status','=','0')
 		->get()]);
+	}
+
+	public function correo_activo($correo){
+		$prestador=PrestadorServicio::select('id_prestador','status','solicitud')
+		->where('correo','=',$correo)
+		->where('status','=','1')
+		->where('solicitud','=','1')
+		->get();
+
+		return response()->json(['Prestador'=>$prestador]);
 	}
 
 	public function dashboard(){

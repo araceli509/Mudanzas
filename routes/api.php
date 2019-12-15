@@ -75,6 +75,7 @@ Route::group(['prefix'=>'auth'],function(){
         Route::get('buscar/{correo}','Mudanza\PrestadorServicioController@buscar_correo');
         Route::get('horario_tarifa/{horainicio}','Mudanza\PrestadorServicioController@verprestadorporhora');
         Route::get('busquedaprestador_id/{id}','Mudanza\PrestadorServicioController@busquedaPrestadorServicio_id');
+        Route::get('correo_activo/{correo}','Mudanza\PrestadorServicioController@correo_activo');
      });
 
       /**********************************VEHICULO ************************************************ */
