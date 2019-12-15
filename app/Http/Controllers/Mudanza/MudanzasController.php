@@ -20,6 +20,8 @@ class MudanzasController extends Controller
             'destino'=> ['required', 'string',],
             'distancia'=> ['required', 'string'],
             'fecha_registro'=> ['required', 'date_format:Y/m/d'],
+            'hora'=>['required','string'],
+
         ]);
 
         $mudanza = mudanzas::create([
@@ -28,7 +30,9 @@ class MudanzasController extends Controller
             'origen' => $request['origen'],
             'destino' => $request['origen'],
             'distancia' => $request['distancia'],
-            'fecha_registro' => $request['fecha_registro']
+            'fecha_registro' => $request['fecha_registro'],
+            'status'=>1,
+            'hora'=>$request['hora']
         ]);
       return response()->json(['Exito'=>'Mudanza establecida']);
 
@@ -52,18 +56,38 @@ class MudanzasController extends Controller
   }
   public function miMudanzaActiva($id)
   {
-    $mudanzas= Mudanzas::With('cliente')->where('id_prestador',$id)->where('status','=','3')->get();  
+    $mudanzas= Mudanzas::With('cliente')->where('id_prestador',$id)->where('status','=','3')->get();
     $data= $mudanzas->toArray();
     return response(["mudanzas"=>$data]);
   }
 
-  public function mismudanzasCliente($id){
-    $mudanzas= Cliente::With('mudanzas')->where('id_cliente',$id)->where('status','=','1')->get();
+  public function mismudanzasenesperacliente($id){
+    $mudanzas= Mudanzas::With('prestador')->where('id_cliente',$id)->where('status','=','1')->get();
 
     $data= $mudanzas->toArray();
   // return $data;
   return response(["mudanzas"=>$data]);
+  }
+  public function mismudanzashechasCliente($id){
+    $mudanzas= Mudanzas::With('prestador')->where('id_cliente',$id)->where('status','=','2')->get();
+    $data= $mudanzas->toArray();
+  // return $data;
+  return response(["mudanzas"=>$data]);
+  }
+  public function mismudanzasactivasCliente($id){
+    $mudanzas= Mudanzas::With('prestador')->where('id_cliente',$id)->where('status','=','3')->get();
 
+    $data= $mudanzas->toArray();
+  // return $data;
+  return response(["mudanzas"=>$data]);
+  }
+
+  public function cambiarestado(Request $request)
+  {
+    $mimudanza= Mudanzas::find($request->id_mudanza);
+    $mimudanza->status=$request->status;
+    $mimudanza->save();
+    return response(['Exito'=>'Mudanza establecida']);
   }
 
     public function listarMisServicios($id_prestador){
