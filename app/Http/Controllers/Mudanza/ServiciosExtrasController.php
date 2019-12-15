@@ -44,9 +44,9 @@ class ServiciosExtrasController extends Controller
         $costoUnitarioCajaG = $request->costoUnitarioCajaG;
         $costoUnitarioCajaM = $request->costoUnitarioCajaM;
         $costoUnitarioCajaC = $request->costoUnitarioCajaC;
+        $precio=$request->precio;
         $descripcion = $request->descripcion;
         $fecha_comentario = $request->fecha_comentario;
-        $precio=$request->precio;
         $id_cliente = $request->id_cliente;
         
         $cliente = Ranking::create([
