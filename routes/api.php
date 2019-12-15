@@ -32,6 +32,8 @@ Route::group(['prefix'=>'auth'],function(){
     Route::group(['prefix'=>'mudanzas'],function(){
     Route::get('miscudanzascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasCliente');
     Route::get('listarmismudanzasprestador/{id_prestador}','Mudanza\MudanzasController@listarMisMudanzas');
+    Route::get('listarmismudanzaspendientes/{id_prestador}','Mudanza\MudanzasController@misMudanzasenEspera');
+    Route::get('mudanzaactiva/{id_prestador}','Mudanza\MudanzasController@miMudanzaActiva');
 
 
     });
