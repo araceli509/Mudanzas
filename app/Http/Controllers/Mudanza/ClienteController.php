@@ -30,7 +30,7 @@ class ClienteController extends Controller
 
    //Metodo que busca un cliente por medio de su correo
    public function cliente_correo($correo){
-    return response()->json(['cliente'=>$id=Cliente::select('nombre','apellidos','correo','direccion','telefono','codigo_postal','fecha_registro')
+    return response()->json(['cliente'=>$id=Cliente::select('id_cliente','nombre','apellidos','correo','direccion','telefono','codigo_postal','fecha_registro')
    ->where('correo','=',$correo)
    ->where('status', '=','1')
    ->get()]);
