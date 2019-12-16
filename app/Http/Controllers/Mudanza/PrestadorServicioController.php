@@ -98,7 +98,8 @@ class PrestadorServicioController extends Controller
 			'solicitud'=>'1'
 
 		]);
-		echo $correo_user;
+		
+		return redirect()->to('prestador/pendientes');
 	}
 
 	public function ver_detalle_prestador($id){
