@@ -28,6 +28,14 @@ class ClienteController extends Controller
         ->get());
     }
 
+   //Metodo que busca un cliente por medio de su correo
+   public function cliente_correo($correo){
+    return response()->json(['cliente'=>$id=Cliente::select('id_cliente','nombre','apellidos','correo','direccion','telefono','codigo_postal','fecha_registro')
+   ->where('correo','=',$correo)
+   ->where('status', '=','1')
+   ->get()]);
+}
+
     //Metodo que busca un cliente por medio de su correo
 	public function busquedacliente_correo($correo){
         return response()->json(['cliente'=>$id=Cliente::select('id_cliente')
@@ -35,6 +43,16 @@ class ClienteController extends Controller
        ->where('status', '=','1')
        ->get()]);
    }
+   public function busquedacliente_correo_reservacion($correo){
+    $prestador=Cliente::join('reservacion','cliente.id_cliente','=','reservacion.id_cliente')
+    ->join('prestador_servicio','reservacion.id_prestador','=','prestador_servicio.id_prestador')
+    ->select('prestador_servicio.nombre','reservacion.fecha_hora','reservacion.origen','reservacion.destino','reservacion.monto','reservacion.status')
+     ->where('cliente.correo','=',$correo)
+     ->where('reservacion.status', '!=','0')
+     ->get();
+     return response()->json(['reservacion'=>$prestador]);
+}
+
    public function busquedaPrestador($correo){
          return response()->json(['prestador'=>$id=PrestadorServicio::select('id_prestador')
         ->where('correo','=',$correo)
@@ -45,13 +63,7 @@ class ClienteController extends Controller
 
    public function agregar_cliente(Request $request){
     $request->validate([
-            'nombre'=> ['required', 'string', 'max:50','unique:cliente'],
-            'apellidos'=> ['required', 'string', 'max:100'],
-            'correo' => ['required', 'email', 'max:255', 'unique:cliente'],
-            'direccion'=> ['required', 'string', 'max:200'],
-            'telefono'=> ['required', 'string', 'max:20','unique:cliente'],
-            'codigo_postal'=> ['required', 'string', 'max:10'],
-            'fecha_registro'=> ['required', 'date_format:Y/m/d'],
+            'correo' => ['required', 'email', 'max:255', 'unique:cliente']
         ]);
         //$cliente = Cliente::create($request->all());
         $cliente = Cliente::create([
@@ -70,19 +82,9 @@ class ClienteController extends Controller
 
     //metodo que actualiza la informacion del cliente
     public function actualizar_cliente(Cliente $cliente,Request $request){
-        $request->validate([
-            'nombre'=> ['string', 'max:50',Rule::unique('cliente')->ignore($cliente)],
-            'apellidos'=> ['string', 'max:100'],
-            'correo' => ['email', 'max:255', Rule::unique('cliente')->ignore($cliente)],
-            'direccion'=> ['string', 'max:200'],
-            'telefono'=> ['string', 'max:20',Rule::unique('cliente')->ignore($cliente)],
-            'codigo_postal'=> [ 'string', 'max:10'],
-            'fecha_registro'=> ['date_format:Y/m/d'],
-        ]);
         $cliente->fill($request->all());
         $cliente ->save();
         return response()->json(['Exito'=>'Actualizado correctamente']);
-
     }
 
     //Metodo para eliminar un cliente

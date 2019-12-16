@@ -15,7 +15,7 @@ class ServiciosExtrasController extends Controller
 
     public function mostrar(Request $request){
         $id=$request->id;
-        return response()->json(['servicios_extras'=>$id=Horario_Tarifa::select('dias','hora_inicio','hora_salida','costoXcargador','costoUnitarioCajaG','costoUnitarioCajaM','costoUnitarioCajaC','precio')
+        return response()->json(['id_prestador','servicios_extras'=>$id=Horario_Tarifa::select('dias','hora_inicio','hora_salida','costoXcargador','costoUnitarioCajaG','costoUnitarioCajaM','costoUnitarioCajaC','precio')
         ->where('id_prestador','=',$id)
         ->get()]);
     }
@@ -90,7 +90,5 @@ class ServiciosExtrasController extends Controller
        $horario->costoUnitarioCajaC=$request->costoUnitarioCajaC;
        $horario->save();
        return response()->json(["resultado"=>"correcto"]);
-
      }
-
 }

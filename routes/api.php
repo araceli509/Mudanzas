@@ -18,7 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix'=>'auth'],function(){
-
     //Apis para la actualizacion,resgistro,eliminacion y listado de uno o mas usuarios
     Route::group(['prefix'=>'cliente'],function(){
     Route::get('listarcliente','Mudanza\ClienteController@listarclientes');
@@ -27,7 +26,9 @@ Route::group(['prefix'=>'auth'],function(){
     Route::post('actualizar_cliente/{cliente}','Mudanza\ClienteController@actualizar_cliente');
     Route::post('eliminar_cliente/{id}','Mudanza\ClienteController@eliminar_cliente');
     Route::get('busquedacliente_correo/{correo}','Mudanza\ClienteController@busquedacliente_correo');
+    Route::get('busquedacliente_correo_reservacion/{correo}','Mudanza\ClienteController@busquedacliente_correo_reservacion');
     Route::get('busquedaprestador/{correo}','Mudanza\ClienteController@busquedaPrestador');
+    Route::get('cliente_correo/{correo}','Mudanza\ClienteController@cliente_correo');
     });
     Route::group(['prefix'=>'mudanzas'],function(){
     Route::post('insertar','Mudanza\MudanzasController@insertarMudanza');
@@ -35,6 +36,21 @@ Route::group(['prefix'=>'auth'],function(){
     Route::get('listarmismudanzasprestador/{id_prestador}','Mudanza\MudanzasController@listarMisMudanzas');
     Route::get('listarmismudanzaspendientes/{id_prestador}','Mudanza\MudanzasController@misMudanzasenEspera');
     Route::get('mudanzaactiva/{id_prestador}','Mudanza\MudanzasController@miMudanzaActiva');
+    Route::post('cambiarestadomudazas','Mudanza\MudanzasController@cambiarestado');
+    Route::get('buscaruid/','Mudanza\UbicacionPrestadorController@buscaruid');
+    Route::post('eliminarubicacion','Mudanza\UbicacionPrestadorController@eliminaruid');
+    Route::post('insertarubicacion','Mudanza\UbicacionPrestadorController@insertarubicacion');
+
+    Route::get('mismudanzasactivascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasactivasCliente');
+    Route::get('mismudanzashechascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzashechasCliente');
+    Route::get('mismudanzasenesperacliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasenesperacliente');
+
+
+        Route::get('mismudanzasactivascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasactivasCliente');
+        Route::get('mismudanzashechascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzashechasCliente');
+        Route::get('mismudanzasenesperacliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasenesperacliente');
+
+
 
 
     });
@@ -76,6 +92,7 @@ Route::group(['prefix'=>'auth'],function(){
         Route::get('buscar/{correo}','Mudanza\PrestadorServicioController@buscar_correo');
         Route::get('horario_tarifa/{horainicio}','Mudanza\PrestadorServicioController@verprestadorporhora');
         Route::get('busquedaprestador_id/{id}','Mudanza\PrestadorServicioController@busquedaPrestadorServicio_id');
+        Route::get('correo_activo/{correo}','Mudanza\PrestadorServicioController@correo_activo');
      });
 
       /**********************************VEHICULO ************************************************ */

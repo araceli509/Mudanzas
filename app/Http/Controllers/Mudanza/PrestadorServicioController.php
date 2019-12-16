@@ -27,8 +27,6 @@ class PrestadorServicioController extends Controller
     } 
 
     public function ultimo_registro(){
-		//{"id_prestador":1};
-		//$prestador=PrestadorServicio::all();
 			$prestador=PrestadorServicio::all();
 			return response()->json(['Prestador'=>$prestador]);
 		
@@ -41,6 +39,14 @@ class PrestadorServicioController extends Controller
 		->where('solicitud','=','0')
 		->where('status','=','0')
 		->get()]);
+	}
+
+	public function correo_activo(Request $request){
+		$correo=$request->correo;
+		$prestador=PrestadorServicio::select('id_prestador','status','solicitud')
+		->where('correo','=',$correo)
+		->get();
+		return response()->json(['Prestador'=>$prestador]);
 	}
 
 	public function dashboard(){
@@ -66,8 +72,12 @@ class PrestadorServicioController extends Controller
 
 	public function ver_detalles_prestador_pendiente($id){
 		$prestador=PrestadorServicio::find($id);
-		$documentos=Documentos::find($id);
-		$vehiculos=Vehiculo::find($id);
+		$documentos=Documentos::select('ine','tarjeta_circulacion','licencia_vigente')
+		->where('id_prestador','=',$id)->get();
+
+		$vehiculos=Vehiculo::select('foto_frontal','foto_lateral','foto_trasera')
+		->where('id_prestador','=',$id)->get();
+		
 		return view('admin.detalles_prestador_pendiente')->with('prestador',$prestador)
 		->with('documentos',$documentos)
 		->with('vehiculo',$vehiculos);
@@ -104,6 +114,7 @@ class PrestadorServicioController extends Controller
 		->join('ranking','prestador_servicio.id_prestador','=','ranking.id_prestador')
 		->select('prestador_servicio.id_prestador','prestador_servicio.nombre','vehiculos2.largo','vehiculos2.ancho','vehiculos2.alto','horario_tarifa.precio','ranking.valoracion')
 		->where('prestador_servicio.status', '=','1')
+		->where('prestador_servicio.solicitud', '=','1')
 		->WhereRaw('? BETWEEN horario_tarifa.hora_inicio and horario_tarifa.hora_salida',$horainicio)
         ->get();
 		  return response()->json(['prestador'=>$prestador]);
