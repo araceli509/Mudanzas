@@ -107,7 +107,7 @@
 
     <input type="hidden" name="id" value="{{ $prestador->id_prestador}}">
 
-           <input type="submit" class="btn btn-success" name="act" value="Aprovar">
+           <input type="submit" class="btn btn-success" name="act" value="Aprobar">
     </form>
 @endsection
 
