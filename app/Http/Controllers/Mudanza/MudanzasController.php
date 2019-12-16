@@ -19,7 +19,7 @@ class MudanzasController extends Controller
             'origen' => ['required', 'string'],
             'destino'=> ['required', 'string',],
             'distancia'=> ['required', 'string'],
-            'fecha_registro'=> ['required', 'date_format:Y/m/d'],
+            'fecha_mudanza'=> ['required', 'date_format:Y/m/d'],
             'hora'=>['required','string'],
 
         ]);
@@ -30,9 +30,10 @@ class MudanzasController extends Controller
             'origen' => $request['origen'],
             'destino' => $request['origen'],
             'distancia' => $request['distancia'],
-            'fecha_registro' => $request['fecha_registro'],
-            'status'=>1,
-            'hora'=>$request['hora']
+            'tiempo'=>$request['tiempo'],
+            'fecha_mudanza' => $request['fecha_mudanza'],
+            'hora'=>$request['hora'],
+            'status'=>1
         ]);
       return response()->json(['Exito'=>'Mudanza establecida']);
 
