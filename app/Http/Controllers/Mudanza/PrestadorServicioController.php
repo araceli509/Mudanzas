@@ -42,12 +42,6 @@ class PrestadorServicioController extends Controller
 	}
 
 	public function correo_activo(Request $request){
-		//$prestador=PrestadorServicio::select('id_prestador','status','solicitud')
-		//->where('correo','=',$correo)s
-		//->where('status','=','1')
-		//->where('solicitud','=','1')
-		//->get();
-		//$status=$prestador->status;
 		$correo=$request->correo;
 		$prestador=PrestadorServicio::select('id_prestador','status','solicitud')
 		->where('correo','=',$correo)
@@ -78,8 +72,12 @@ class PrestadorServicioController extends Controller
 
 	public function ver_detalles_prestador_pendiente($id){
 		$prestador=PrestadorServicio::find($id);
-		$documentos=Documentos::find($id);
-		$vehiculos=Vehiculo::find($id);
+		$documentos=Documentos::select('ine','tarjeta_circulacion','licencia_vigente')
+		->where('id_prestador','=',$id)->get();
+
+		$vehiculos=Vehiculo::select('foto_frontal','foto_lateral','foto_trasera')
+		->where('id_prestador','=',$id)->get();
+		
 		return view('admin.detalles_prestador_pendiente')->with('prestador',$prestador)
 		->with('documentos',$documentos)
 		->with('vehiculo',$vehiculos);
