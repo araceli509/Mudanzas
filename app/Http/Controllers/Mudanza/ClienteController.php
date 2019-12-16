@@ -28,6 +28,14 @@ class ClienteController extends Controller
         ->get());
     }
 
+   //Metodo que busca un cliente por medio de su correo
+   public function cliente_correo($correo){
+    return response()->json(['cliente'=>$id=Cliente::select('nombre','apellidos','correo','direccion','telefono','codigo_postal','fecha_registro')
+   ->where('correo','=',$correo)
+   ->where('status', '=','1')
+   ->get()]);
+}
+
     //Metodo que busca un cliente por medio de su correo
 	public function busquedacliente_correo($correo){
         return response()->json(['cliente'=>$id=Cliente::select('id_cliente')
