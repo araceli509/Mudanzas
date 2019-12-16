@@ -18,7 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix'=>'auth'],function(){
-
     //Apis para la actualizacion,resgistro,eliminacion y listado de uno o mas usuarios
     Route::group(['prefix'=>'cliente'],function(){
     Route::get('listarcliente','Mudanza\ClienteController@listarclientes');

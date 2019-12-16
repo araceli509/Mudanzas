@@ -55,13 +55,7 @@ class ClienteController extends Controller
 
    public function agregar_cliente(Request $request){
     $request->validate([
-            'nombre'=> ['required', 'string', 'max:50','unique:cliente'],
-            'apellidos'=> ['required', 'string', 'max:100'],
-            'correo' => ['required', 'email', 'max:255', 'unique:cliente'],
-            'direccion'=> ['required', 'string', 'max:200'],
-            'telefono'=> ['required', 'string', 'max:20','unique:cliente'],
-            'codigo_postal'=> ['required', 'string', 'max:10'],
-            'fecha_registro'=> ['required', 'date_format:Y/m/d'],
+            'correo' => ['required', 'email', 'max:255', 'unique:cliente']
         ]);
         //$cliente = Cliente::create($request->all());
         $cliente = Cliente::create([
@@ -80,19 +74,9 @@ class ClienteController extends Controller
 
     //metodo que actualiza la informacion del cliente
     public function actualizar_cliente(Cliente $cliente,Request $request){
-        $request->validate([
-            'nombre'=> ['string', 'max:50',Rule::unique('cliente')->ignore($cliente)],
-            'apellidos'=> ['string', 'max:100'],
-            'correo' => ['email', 'max:255', Rule::unique('cliente')->ignore($cliente)],
-            'direccion'=> ['string', 'max:200'],
-            'telefono'=> ['string', 'max:20',Rule::unique('cliente')->ignore($cliente)],
-            'codigo_postal'=> [ 'string', 'max:10'],
-            'fecha_registro'=> ['date_format:Y/m/d'],
-        ]);
         $cliente->fill($request->all());
         $cliente ->save();
         return response()->json(['Exito'=>'Actualizado correctamente']);
-
     }
 
     //Metodo para eliminar un cliente
