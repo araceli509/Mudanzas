@@ -35,8 +35,10 @@ Route::group(['prefix'=>'auth'],function(){
     Route::get('listarmismudanzasprestador/{id_prestador}','Mudanza\MudanzasController@listarMisMudanzas');
     Route::get('listarmismudanzaspendientes/{id_prestador}','Mudanza\MudanzasController@misMudanzasenEspera');
     Route::get('mudanzaactiva/{id_prestador}','Mudanza\MudanzasController@miMudanzaActiva');
-    Route::post('cambiarestadomudazan/','Mudanza\MudanzasController@cambiarestado');
+    Route::post('cambiarestadomudazas','Mudanza\MudanzasController@cambiarestado');
     Route::get('buscaruid/','Mudanza\UbicacionPrestadorController@buscaruid');
+    Route::post('eliminarubicacion','Mudanza\UbicacionPrestadorController@eliminaruid');
+    Route::post('insertarubicacion','Mudanza\UbicacionPrestadorController@insertarubicacion');
 
     Route::get('mismudanzasactivascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzasactivasCliente');
     Route::get('mismudanzashechascliente/{id_cliente}','Mudanza\MudanzasController@mismudanzashechasCliente');
